@@ -1,5 +1,5 @@
 /*
- *    LBaggingMC.java
+ *    LBagMC.java
  *    Copyright (C) 2010 University of Waikato, Hamilton, New Zealand
  *    @author Albert Bifet (abifet at cs dot waikato dot ac dot nz)
  *
@@ -50,7 +50,7 @@ import java.util.stream.IntStream;
  * @author Albert Bifet (abifet at cs dot waikato dot ac dot nz)
  * @version $Revision: 7 $
  */
-public class LBaggingMC extends AbstractClassifier implements MultiClassClassifier,
+public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
         CapabilitiesHandler {
 
     private static final long serialVersionUID = 1L;
@@ -78,7 +78,7 @@ public class LBaggingMC extends AbstractClassifier implements MultiClassClassifi
 
     public MultiChoiceOption leveraginBagAlgorithmOption = new MultiChoiceOption(
             "leveraginBagAlgorithm", 'm', "Leveraging Bagging to use.", new String[]{
-            "LBaggingMC", "LeveragingBagME", "LeveragingBagHalf", "LeveragingBagWT", "LeveragingSubag"},
+            "LBagMC", "LeveragingBagME", "LeveragingBagHalf", "LeveragingBagWT", "LeveragingSubag"},
             new String[]{"Leveraging Bagging for evolving data streams using ADWIN",
                     "Leveraging Bagging ME using weight 1 if misclassified, otherwise error/(1-error)",
                     "Leveraging Bagging Half using resampling without replacement half of the instances",
@@ -166,7 +166,7 @@ public class LBaggingMC extends AbstractClassifier implements MultiClassClassifi
             for (int i = 0; i < this.ensemble.length; i++) {
                 double k = 0.0;
                 switch (this.leveraginBagAlgorithmOption.getChosenIndex()) {
-                    case 0: //LBaggingMC
+                    case 0: //LBagMC
                         k = MiscUtils.poisson(w, this.classifierRandom);
                         break;
                     case 1: //LeveragingBagME
@@ -227,7 +227,7 @@ public class LBaggingMC extends AbstractClassifier implements MultiClassClassifi
         Instance weightedInst = (Instance) instance.copy();
         double k = 0.0;
         switch (this.leveraginBagAlgorithmOption.getChosenIndex()) {
-            case 0: //LBaggingMC
+            case 0: //LBagMC
                 k = MiscUtils.poisson(w, this.classifierRandom);
                 break;
             case 1: //LeveragingBagME
@@ -332,7 +332,7 @@ public class LBaggingMC extends AbstractClassifier implements MultiClassClassifi
 
     @Override
     public ImmutableCapabilities defineImmutableCapabilities() {
-        if (this.getClass() == LBaggingMC.class)
+        if (this.getClass() == LBagMC.class)
             return new ImmutableCapabilities(Capability.VIEW_STANDARD, Capability.VIEW_LITE);
         else
             return new ImmutableCapabilities(Capability.VIEW_STANDARD);
