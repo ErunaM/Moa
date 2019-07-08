@@ -1,5 +1,5 @@
 /*
- *    EibeMod1.java
+ *    OzaBagBMod1.java
  *    Copyright (C) 2019 University of Waikato, Hamilton, New Zealand
  *    @author Bernhard Pfahringr (bernhard@waikato.ac.nz)
  *

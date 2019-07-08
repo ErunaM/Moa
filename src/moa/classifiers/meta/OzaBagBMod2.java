@@ -1,5 +1,5 @@
 /*
- *    EibeMod1.java
+ *    OzaBagBMod2.java
  *    Copyright (C) 2019 University of Waikato, Hamilton, New Zealand
  *    @author Bernhard Pfahringr (bernhard@waikato.ac.nz)
  *
@@ -62,7 +62,7 @@ import java.util.stream.IntStream;
  * @author Richard Kirkby (rkirkby@cs.waikato.ac.nz)
  * @version $Revision: 7 $
  */
-public class EibeMod1 extends AbstractClassifier implements MultiClassClassifier {
+public class OzaBagBMod2 extends AbstractClassifier implements MultiClassClassifier {
 
     public String getPurposeString() {
         return "Incremental on-line bagging of Oza and Russell.";
@@ -135,15 +135,15 @@ public class EibeMod1 extends AbstractClassifier implements MultiClassClassifier
                             .collect(Predictor::new, Predictor::accept, Predictor::combine)
                             .getVotes();
 
-           // for (double v: votes) sum += v;
-                sum = Arrays.stream(votes).parallel().reduce(0,Double::sum);
+            for (double v: votes) sum += v;
+//                sum = Arrays.stream(votes).parallel().reduce(0,Double::sum);
             if (sum > 0.0) {
                 sum = 1.0/sum;
                 final double sumF = sum;
-//                votes = Arrays.stream(votes).parallel().map(i -> i* sumF).toArray();
-                for (int i = 0; i < votes.length; i++) {
-                    votes[i] *= sum;
-                }
+               votes = Arrays.stream(votes).parallel().map(i -> i* sumF).toArray();
+//                for (int i = 0; i < votes.length; i++) {
+//                    votes[i] *= sum;
+//                }
 
             }
             return votes;
