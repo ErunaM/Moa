@@ -62,7 +62,7 @@ import java.util.stream.IntStream;
  * @author Richard Kirkby (rkirkby@cs.waikato.ac.nz)
  * @version $Revision: 7 $
  */
-public class EibeFranksOza extends AbstractClassifier implements MultiClassClassifier {
+public class OzaBagB extends AbstractClassifier implements MultiClassClassifier {
 
     public String getPurposeString() {
         return "Incremental on-line bagging of Oza and Russell.";
