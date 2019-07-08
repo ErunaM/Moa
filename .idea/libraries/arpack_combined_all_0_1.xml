@@ -1,0 +1,72 @@
+<component name="libraryTable">
+  <library name="arpack_combined_all-0.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/arpack_combined_all-0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/autoencoder-0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/bmad-2.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/bounce-0.18.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/classworlds-1.1-alpha-2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/commons-beanutils-1.9.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/commons-cli-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/commons-collections-3.2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/commons-io-2.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/commons-lang3-3.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/commons-math3-3.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/commons-text-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/core-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/doxia-sink-api-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/ejml-0.22.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/fcms-widgets-0.0.14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/jama-1.0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/java-cup-11b-2015.03.26.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/java-cup-11b-runtime-2015.03.26.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/jclasslocator-0.0.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/jclipboardhelper-0.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/jcommon-1.0.23.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/jfilechooser-bookmarks-0.1.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/jfreechart-1.0.19.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/jide-oss-3.6.18.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/jniloader-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/jshell-scripting-0.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/markdownj-core-0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/maven-artifact-2.0.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/maven-artifact-manager-2.0.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/maven-model-2.0.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/maven-plugin-api-2.0.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/maven-plugin-registry-2.0.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/maven-profile-2.0.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/maven-project-2.0.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/maven-reporting-api-2.0.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/maven-repository-metadata-2.0.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/maven-settings-2.0.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/meka-1.9.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/moa.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/mtj-1.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/multisearch-weka-package-2017.10.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/native_ref-java-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/native_system-java-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/netlib-java-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/netlib-native_ref-linux-i686-1.1-natives.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/netlib-native_ref-linux-x86_64-1.1-natives.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/netlib-native_ref-win-i686-1.1-natives.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/netlib-native_ref-win-x86_64-1.1-natives.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/opencsv-4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/plexus-container-default-1.0-alpha-9-stable-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/plexus-utils-3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/processoutput4j-0.0.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/rsyntaxtextarea-2.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/scala-library-2.10.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/scala-swing-2.10.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/scalatest-maven-plugin-1.0-M2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/sizeofag-1.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/trove4j-3.0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/wagon-provider-api-1.0-beta-2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/lib/weka-dev-3.9.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
