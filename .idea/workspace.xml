@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed62ce1e-7bf1-483f-96ab-e87915a8012d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/times.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/EibeMod1$Predictor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/EibeMod1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/EibeMod2$Predictor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/EibeMod2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/LBaggingMC.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="241" column="60" lean-forward="true" selection-start-line="241" selection-start-column="60" selection-end-line="241" selection-end-column="60" />
+            <state relative-caret-position="229">
+              <caret line="162" column="8" lean-forward="true" selection-start-line="162" selection-start-column="8" selection-end-line="162" selection-end-column="32" />
               <folding>
                 <element signature="e#13487#13488#0" expanded="true" />
                 <element signature="e#14030#14031#0" expanded="true" />
@@ -49,43 +43,41 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="162" column="29" selection-start-line="162" selection-start-column="29" selection-end-line="162" selection-end-column="29" />
+              <folding>
+                <element signature="e#8694#8695#0" expanded="true" />
+                <element signature="e#9144#9145#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/classifiers/meta/OzaBagAdwin.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="139" column="26" lean-forward="true" selection-end-line="196" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/classifiers/meta/AdaptiveRandomForest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="85" column="13" selection-end-line="478" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/times.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
               <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/classifiers/meta/LeveragingBag.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="85" selection-start-line="85" selection-end-line="85" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagBMod1.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1530">
-              <caret line="138" column="76" selection-start-line="138" selection-start-column="76" selection-end-line="138" selection-end-column="76" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagBMod2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1545">
-              <caret line="139" column="14" selection-start-line="139" selection-start-column="14" selection-end-line="139" selection-end-column="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -159,6 +151,8 @@
         <option value="$PROJECT_DIR$/src/moa/classifiers/meta/LBaggingMC.java" />
         <option value="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" />
         <option value="$PROJECT_DIR$/times.txt" />
+        <option value="$PROJECT_DIR$/src/moa/classifiers/meta/ARFMC.java" />
+        <option value="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java" />
       </list>
     </option>
   </component>
@@ -325,14 +319,21 @@
       <option name="project" value="LOCAL" />
       <updated>1562628859136</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fix'd Multi core L bagging class, was giving different accuracys each run, found out running a random number generator in parallel sometimes gives the same number to multiple classifiers so did the random generator outside of the threads before hand.">
+      <created>1562728623656</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1562728623656</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1533" height="875" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.020174848" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1869536" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -340,14 +341,14 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49697378" weight="0.32841823" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49831876" visible="true" weight="0.22117962" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49562877" weight="0.32841823" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49831876" weight="0.22117962" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5016812" side_tool="true" visible="true" weight="0.22117962" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5043712" side_tool="true" visible="true" weight="0.22117962" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.1684492" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -365,7 +366,8 @@
     <MESSAGE value="Shortening Names/ Adding a draft of Leveraging Bagging Multi Core" />
     <MESSAGE value="Pushing Whole project as requested" />
     <MESSAGE value="Made Name shorter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made Name shorter" />
+    <MESSAGE value="Fix'd Multi core L bagging class, was giving different accuracys each run, found out running a random number generator in parallel sometimes gives the same number to multiple classifiers so did the random generator outside of the threads before hand." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix'd Multi core L bagging class, was giving different accuracys each run, found out running a random number generator in parallel sometimes gives the same number to multiple classifiers so did the random generator outside of the threads before hand." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/moa/classifiers/meta/BaggingCores.java" />
@@ -484,10 +486,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/times.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/classifiers/meta/AdaptiveRandomForest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="85" column="13" selection-end-line="478" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/classifiers/meta/OzaBagAdwin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="139" column="26" lean-forward="true" selection-end-line="196" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="241" column="60" lean-forward="true" selection-start-line="241" selection-start-column="60" selection-end-line="241" selection-end-column="60" />
+        <state relative-caret-position="229">
+          <caret line="162" column="8" lean-forward="true" selection-start-line="162" selection-start-column="8" selection-end-line="162" selection-end-column="32" />
           <folding>
             <element signature="e#13487#13488#0" expanded="true" />
             <element signature="e#14030#14031#0" expanded="true" />
@@ -495,10 +518,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/times.txt">
+    <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="240">
+          <caret line="162" column="29" selection-start-line="162" selection-start-column="29" selection-end-line="162" selection-end-column="29" />
+          <folding>
+            <element signature="e#8694#8695#0" expanded="true" />
+            <element signature="e#9144#9145#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
