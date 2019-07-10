@@ -89,6 +89,8 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
     public FlagOption _parallelOption = new FlagOption("parallel", 'p',
             "Run ensemble in parallel.");
 
+    protected double[] randomPoissonArray;
+
     protected Classifier[] ensemble;
 
     protected ADWIN[] ADError;
@@ -106,6 +108,7 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
         this.ensemble = new Classifier[this.ensembleSizeOption.getValue()];
         Classifier baseLearner = (Classifier) getPreparedClassOption(this.baseLearnerOption);
         baseLearner.resetLearning();
+        randomPoissonArray = new double[this.ensembleSizeOption.getValue()];
         for (int i = 0; i < this.ensemble.length; i++) {
             this.ensemble[i] = baseLearner.copy();
         }
@@ -159,6 +162,33 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
         double w = this.weightShrinkOption.getValue();
         int n = ensemble.length;
         if (_parallelOption.isSet()) {
+            for (int i = 0; i < this.ensemble.length; i++) {
+                double k = 0.0;
+                switch (this.leveraginBagAlgorithmOption.getChosenIndex()) {
+                    case 0: //LBagMC
+                        k = MiscUtils.poisson(w, this.classifierRandom);
+                        break;
+                    case 1: //LeveragingBagME
+                        double error = this.ADError[i].getEstimation();
+                        k = !this.ensemble[i].correctlyClassifies(weightedInst) ? 1.0 : (this.classifierRandom.nextDouble() < (error / (1.0 - error)) ? 1.0 : 0.0);
+                        break;
+                    case 2: //LeveragingBagHalf
+                        w = 1.0;
+                        k = this.classifierRandom.nextBoolean() ? 0.0 : w;
+                        break;
+                    case 3: //LeveragingBagWT
+                        w = 1.0;
+                        k = 1.0 + MiscUtils.poisson(w, this.classifierRandom);
+                        break;
+                    case 4: //LeveragingSubag
+                        w = 1.0;
+                        k = MiscUtils.poisson(1, this.classifierRandom);
+                        k = (k > 0) ? w : 0;
+                        break;
+
+                }
+                randomPoissonArray[i] = k;
+            }
             IntStream.range(0, n).parallel().forEach(i -> train(i, inst));
 
         }else{
@@ -203,7 +233,9 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
                 }
             }
         }
+       // System.out.println("cycle");
         if (Change || _Change) {
+            //System.out.println("test");
             numberOfChangesDetected++;
             double max = 0.0;
             int imax = -1;
@@ -225,29 +257,9 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
 
         double w = this.weightShrinkOption.getValue();
         Instance weightedInst = (Instance) instance.copy();
-        double k = 0.0;
-        switch (this.leveraginBagAlgorithmOption.getChosenIndex()) {
-            case 0: //LBagMC
-                k = MiscUtils.poisson(w, this.classifierRandom);
-                break;
-            case 1: //LeveragingBagME
-                double error = this.ADError[index].getEstimation();
-                k = !this.ensemble[index].correctlyClassifies(weightedInst) ? 1.0 : (this.classifierRandom.nextDouble() < (error / (1.0 - error)) ? 1.0 : 0.0);
-                break;
-            case 2: //LeveragingBagHalf
-                w = 1.0;
-                k = this.classifierRandom.nextBoolean() ? 0.0 : w;
-                break;
-            case 3: //LeveragingBagWT
-                w = 1.0;
-                k = 1.0 + MiscUtils.poisson(w, this.classifierRandom);
-                break;
-            case 4: //LeveragingSubag
-                w = 1.0;
-                k = MiscUtils.poisson(1, this.classifierRandom);
-                k = (k > 0) ? w : 0;
-                break;
-        }
+        double k = this.randomPoissonArray[index];
+
+
         if (k > 0) {
             if (this.outputCodesOption.isSet()) {
                 weightedInst.setClassValue((double) this.matrixCodes[index][(int) instance.classValue()]);

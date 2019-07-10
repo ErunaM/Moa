@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ed62ce1e-7bf1-483f-96ab-e87915a8012d" name="Default Changelist" comment="" />
+    <list default="true" id="ed62ce1e-7bf1-483f-96ab-e87915a8012d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/times.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/EibeMod1$Predictor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/EibeMod1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/EibeMod2$Predictor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/EibeMod2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/LBaggingMC.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,41 +24,35 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagCores.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1275">
-              <caret line="122" column="39" selection-start-line="122" selection-start-column="39" selection-end-line="122" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagB.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
               <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5686#5687#0" expanded="true" />
-                <element signature="e#5713#5714#0" expanded="true" />
-                <element signature="e#6059#6060#0" expanded="true" />
-                <element signature="e#6130#6131#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="256">
+              <caret line="241" column="60" lean-forward="true" selection-start-line="241" selection-start-column="60" selection-end-line="241" selection-end-column="60" />
+              <folding>
+                <element signature="e#13487#13488#0" expanded="true" />
+                <element signature="e#14030#14031#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/LBaggingMC.java">
+        <entry file="file://$PROJECT_DIR$/times.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1005">
-              <caret line="204" column="9" lean-forward="true" selection-start-line="204" selection-start-column="9" selection-end-line="204" selection-end-column="9" />
-              <folding>
-                <element signature="e#12970#12971#0" expanded="true" />
-                <element signature="e#12997#12998#0" expanded="true" />
-                <element signature="e#13496#13497#0" expanded="true" />
-                <element signature="e#13540#13541#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="270">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
@@ -135,6 +138,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>par</find>
+      <find>System</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -153,21 +157,16 @@
         <option value="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagB.java" />
         <option value="$PROJECT_DIR$/src/moa/classifiers/meta/LeveragingBaggingP.java" />
         <option value="$PROJECT_DIR$/src/moa/classifiers/meta/LBaggingMC.java" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" />
+        <option value="$PROJECT_DIR$/times.txt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-11" />
+    <option name="x" value="165" />
     <option name="y" value="27" />
     <option name="width" value="1371" />
-    <option name="height" value="815" />
+    <option name="height" value="873" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -312,14 +311,28 @@
       <option name="project" value="LOCAL" />
       <updated>1562627663532</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Pushing Whole project as requested">
+      <created>1562628606798</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1562628606798</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Made Name shorter">
+      <created>1562628859136</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1562628859136</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1533" height="875" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31472763" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.020174848" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -327,14 +340,14 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49764627" weight="0.32841823" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49899125" weight="0.22117962" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49697378" weight="0.32841823" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49831876" visible="true" weight="0.22117962" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5023537" side_tool="true" visible="true" weight="0.22117962" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5016812" side_tool="true" visible="true" weight="0.22117962" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.1684492" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -350,7 +363,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Shortening Names/ Adding a draft of Leveraging Bagging Multi Core" />
-    <option name="LAST_COMMIT_MESSAGE" value="Shortening Names/ Adding a draft of Leveraging Bagging Multi Core" />
+    <MESSAGE value="Pushing Whole project as requested" />
+    <MESSAGE value="Made Name shorter" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made Name shorter" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/moa/classifiers/meta/BaggingCores.java" />
@@ -465,24 +480,25 @@
           <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5686#5687#0" expanded="true" />
-            <element signature="e#5713#5714#0" expanded="true" />
-            <element signature="e#6059#6060#0" expanded="true" />
-            <element signature="e#6130#6131#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/LBaggingMC.java">
+    <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1005">
-          <caret line="204" column="9" lean-forward="true" selection-start-line="204" selection-start-column="9" selection-end-line="204" selection-end-column="9" />
+        <state relative-caret-position="256">
+          <caret line="241" column="60" lean-forward="true" selection-start-line="241" selection-start-column="60" selection-end-line="241" selection-end-column="60" />
           <folding>
-            <element signature="e#12970#12971#0" expanded="true" />
-            <element signature="e#12997#12998#0" expanded="true" />
-            <element signature="e#13496#13497#0" expanded="true" />
-            <element signature="e#13540#13541#0" expanded="true" />
+            <element signature="e#13487#13488#0" expanded="true" />
+            <element signature="e#14030#14031#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/times.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>

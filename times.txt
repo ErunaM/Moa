@@ -1,0 +1,20 @@
+AIRL data file
+
+Lbagging non parallel
+
+11m28s
+10m37s  -   60.2% accuracy
+
+Lbagging parallel
+
+4m27s   -   59.30% accuracy
+
+60.2-59.3 = 0.9% difference
+
+4m9s - 58.60%
+
+4m20s - 58.60%
+
+5m24s - 60.4%
+
+4m36s - 60.2%
