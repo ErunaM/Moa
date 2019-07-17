@@ -37,6 +37,7 @@ import java.util.Random;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.ForkJoinPool;
 import java.util.stream.IntStream;
 
 /**
@@ -82,14 +83,23 @@ public class OzaBagB extends AbstractClassifier implements MultiClassClassifier 
     public IntOption _randomSeedOption = new IntOption("randomSeed", 's',
             "The random seed.", 42, -Integer.MAX_VALUE, Integer.MAX_VALUE);
 
+    public IntOption _coreAmountOption = new IntOption("NumberOfCores", 'z',
+            "The amount of cores to use for parallelism, Note: The max accounts for physical and virtual Cores", 1, 0, Runtime.getRuntime().availableProcessors());
+
     protected Classifier[] _classifiers;
     protected Instance _instance;
     protected Random _r;
     protected int[] _weight;
+    protected ForkJoinPool _threadpool;
 
     public void resetLearningImpl() {
         _r = new Random( _randomSeedOption.getValue());
         int ensembleSize = _ensembleSizeOption.getValue();
+        int cores = _coreAmountOption.getValue();
+        if(cores == 0){
+            _threadpool = new ForkJoinPool(_coreAmountOption.getMaxValue());
+        }else
+        _threadpool = new ForkJoinPool(cores); // how many worker threads to use e.g how many cores to use
 
         Classifier baseLearner = (Classifier) getPreparedClassOption(_baseLearnerOption);
         baseLearner.resetLearning();
@@ -158,6 +168,11 @@ public class OzaBagB extends AbstractClassifier implements MultiClassClassifier 
             combinedVote.normalize();
             return combinedVote.getArrayRef();
         }
+    }
+
+    // Avoids Thread Pool Leaking
+    public void finishTraining(){
+        _threadpool.shutdown();
     }
 
     public boolean isRandomizable() {

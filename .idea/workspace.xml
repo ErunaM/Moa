@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed62ce1e-7bf1-483f-96ab-e87915a8012d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/OzaBagB$Predictor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/OzaBagB$Predictor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/OzaBagB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/OzaBagB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/times.txt" beforeDir="false" afterPath="$PROJECT_DIR$/times.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,103 +21,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
+            <state relative-caret-position="600">
+              <caret line="172" column="33" selection-start-line="172" selection-start-column="33" selection-end-line="172" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#6280#6281#0" expanded="true" />
+                <element signature="e#6306#6307#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java">
+        <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/tasks/EvaluateInterleavedTestThenTrain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="162" column="8" lean-forward="true" selection-start-line="162" selection-start-column="8" selection-end-line="162" selection-end-column="32" />
-              <folding>
-                <element signature="e#13487#13488#0" expanded="true" />
-                <element signature="e#14030#14031#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="162" column="29" selection-start-line="162" selection-start-column="29" selection-end-line="162" selection-end-column="29" />
-              <folding>
-                <element signature="e#8694#8695#0" expanded="true" />
-                <element signature="e#9144#9145#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="375">
+              <caret line="117" column="33" selection-end-line="230" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/classifiers/meta/OzaBagAdwin.java">
+        <entry file="file://$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="139" column="26" lean-forward="true" selection-end-line="196" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/classifiers/meta/AdaptiveRandomForest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="85" column="13" selection-end-line="478" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/times.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/classifiers/trees/HoeffdingTree.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6825">
-              <caret line="536" column="20" selection-start-line="536" selection-start-column="20" selection-end-line="536" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/util/ArrayList.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2835">
-              <caret line="211" selection-start-line="211" selection-end-line="211" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/core/AutoExpandVector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/options/AbstractOptionHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="60" column="1" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="1" />
+            <state relative-caret-position="300">
+              <caret line="112" selection-start-line="112" selection-end-line="112" />
             </state>
           </provider>
         </entry>
@@ -146,13 +81,14 @@
         <option value="$PROJECT_DIR$/src/moa/classifiers/meta/EibeMod1.java" />
         <option value="$PROJECT_DIR$/src/moa/classifiers/meta/EibeMod2.java" />
         <option value="$PROJECT_DIR$/src/moa/classifiers/meta/EibeFranksOza.java" />
-        <option value="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagB.java" />
         <option value="$PROJECT_DIR$/src/moa/classifiers/meta/LeveragingBaggingP.java" />
         <option value="$PROJECT_DIR$/src/moa/classifiers/meta/LBaggingMC.java" />
         <option value="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" />
-        <option value="$PROJECT_DIR$/times.txt" />
         <option value="$PROJECT_DIR$/src/moa/classifiers/meta/ARFMC.java" />
         <option value="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java" />
+        <option value="$PROJECT_DIR$/times.txt" />
+        <option value="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java" />
+        <option value="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagB.java" />
       </list>
     </option>
   </component>
@@ -185,7 +121,14 @@
               <item name="BaggingCores" type="b2602c69:ProjectViewProjectNode" />
               <item name="BaggingCores" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="meta" type="462c0819:PsiDirectoryNode" />
+              <item name="moa" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BaggingCores" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BaggingCores" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="moa" type="462c0819:PsiDirectoryNode" />
+              <item name="tasks" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BaggingCores" type="b2602c69:ProjectViewProjectNode" />
@@ -326,14 +269,21 @@
       <option name="project" value="LOCAL" />
       <updated>1562728623656</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="converted OzaBagAdwin into multi-core">
+      <created>1562733446896</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1562733446896</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1533" height="875" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1869536" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19502354" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -342,13 +292,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49562877" weight="0.32841823" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49831876" weight="0.22117962" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49697378" weight="0.22117962" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5043712" side_tool="true" visible="true" weight="0.22117962" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50302625" side_tool="true" weight="0.730563" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.1684492" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -367,7 +317,8 @@
     <MESSAGE value="Pushing Whole project as requested" />
     <MESSAGE value="Made Name shorter" />
     <MESSAGE value="Fix'd Multi core L bagging class, was giving different accuracys each run, found out running a random number generator in parallel sometimes gives the same number to multiple classifiers so did the random generator outside of the threads before hand." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix'd Multi core L bagging class, was giving different accuracys each run, found out running a random number generator in parallel sometimes gives the same number to multiple classifiers so did the random generator outside of the threads before hand." />
+    <MESSAGE value="converted OzaBagAdwin into multi-core" />
+    <option name="LAST_COMMIT_MESSAGE" value="converted OzaBagAdwin into multi-core" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/moa/classifiers/meta/BaggingCores.java" />
@@ -476,55 +427,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/times.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="180">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/classifiers/meta/AdaptiveRandomForest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="85" column="13" selection-end-line="478" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/classifiers/meta/OzaBagAdwin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="139" column="26" lean-forward="true" selection-end-line="196" />
+        <state relative-caret-position="-2681">
+          <caret line="89" column="20" lean-forward="true" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
-          <caret line="162" column="8" lean-forward="true" selection-start-line="162" selection-start-column="8" selection-end-line="162" selection-end-column="32" />
+          <caret line="162" column="8" selection-start-line="162" selection-start-column="8" selection-end-line="162" selection-end-column="32" />
           <folding>
+            <element signature="e#13460#13461#0" expanded="true" />
             <element signature="e#13487#13488#0" expanded="true" />
+            <element signature="e#13986#13987#0" expanded="true" />
             <element signature="e#14030#14031#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/classifiers/meta/OzaBagAdwin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="131" column="68" lean-forward="true" selection-start-line="131" selection-start-column="68" selection-end-line="131" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="162" column="29" selection-start-line="162" selection-start-column="29" selection-end-line="162" selection-end-column="29" />
+        <state relative-caret-position="180">
+          <caret line="158" column="13" selection-start-line="158" selection-start-column="13" selection-end-line="158" selection-end-column="13" />
           <folding>
+            <element signature="e#8667#8668#0" expanded="true" />
             <element signature="e#8694#8695#0" expanded="true" />
+            <element signature="e#9100#9101#0" expanded="true" />
             <element signature="e#9144#9145#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/tasks/EvaluateInterleavedTestThenTrain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="117" column="33" selection-end-line="230" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="112" selection-start-line="112" selection-end-line="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="172" column="33" selection-start-line="172" selection-start-column="33" selection-end-line="172" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6280#6281#0" expanded="true" />
+            <element signature="e#6306#6307#0" expanded="true" />
           </folding>
         </state>
       </provider>

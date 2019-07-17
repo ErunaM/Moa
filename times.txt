@@ -18,3 +18,19 @@ Lbagging parallel
 5m24s - 60.4%
 
 4m36s - 60.2%
+
+
+11m34s
+
+11m32s
+
+
+come up with a cloud solution where we have to deploy somthing from the US
+create AWS accounts
+reccomend using university of waikato addresses. set alerts for your credit
+
+key things they lkooking for
+
+reproduceable/automate it e.g package it/run these scripts, use CLI rather than GUI since scripting
+
+G.1.03A afternoons free
