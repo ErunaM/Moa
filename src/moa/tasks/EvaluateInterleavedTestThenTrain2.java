@@ -140,6 +140,8 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
         }
         boolean firstDump = true;
         boolean preciseCPUTiming = TimingUtils.enablePreciseTiming();
+        float timeTaken = 0;
+        long t1 = System.currentTimeMillis();
         long evaluateStartTime = TimingUtils.getNanoCPUTimeOfCurrentThread();
         long lastEvaluateStartTime = evaluateStartTime;
         double RAMHours = 0.0;
@@ -160,6 +162,8 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
                     ||  stream.hasMoreInstances() == false) {
                 long evaluateTime = TimingUtils.getNanoCPUTimeOfCurrentThread();
                 double time = TimingUtils.nanoTimeToSeconds(evaluateTime - evaluateStartTime);
+                long t2 = System.currentTimeMillis();
+                timeTaken = (t2-t1)/1000F;
                 double timeIncrement = TimingUtils.nanoTimeToSeconds(evaluateTime - lastEvaluateStartTime);
                 double RAMHoursIncrement = learner.measureByteSize() / (1024.0 * 1024.0 * 1024.0); //GBs
                 RAMHoursIncrement *= (timeIncrement / 3600.0); //Hours
@@ -177,7 +181,11 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
                                         time),
                                 new Measurement(
                                         "model cost (RAM-Hours)",
-                                        RAMHours)
+                                        RAMHours),
+                                new Measurement(
+                                        "Time Taken (Actual Time)"
+                                        ,timeTaken
+                                )
                         },
                         evaluator, learner));
                 if (immediateResultStream != null) {
@@ -213,6 +221,7 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
                         - evaluateStartTime);
             }
         }
+
         if (immediateResultStream != null) {
             immediateResultStream.close();
         }

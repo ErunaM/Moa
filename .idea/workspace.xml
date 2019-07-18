@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed62ce1e-7bf1-483f-96ab-e87915a8012d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/moa/classifiers/AbstractClassifier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/OzaBagB$Predictor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/OzaBagB$Predictor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/OzaBagB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/OzaBagB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/times.txt" beforeDir="false" afterPath="$PROJECT_DIR$/times.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,33 +19,92 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagB.java">
+        <entry file="file://$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="172" column="33" selection-start-line="172" selection-start-column="33" selection-end-line="172" selection-end-column="33" />
+            <state relative-caret-position="120">
+              <caret line="158" column="47" lean-forward="true" selection-start-line="158" selection-start-column="47" selection-end-line="158" selection-end-column="47" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#6280#6281#0" expanded="true" />
-                <element signature="e#6306#6307#0" expanded="true" />
+                <element signature="e#3826#3827#0" expanded="true" />
+                <element signature="e#3868#3869#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/tasks/EvaluateInterleavedTestThenTrain.java">
+        <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/core/Measurement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="117" column="33" selection-end-line="230" />
+            <state relative-caret-position="-600">
+              <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java">
+        <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/learners/Learner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="112" selection-start-line="112" selection-end-line="112" />
+            <state relative-caret-position="165">
+              <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/moa/classifiers/AbstractClassifier.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="54" column="25" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/classifiers/Classifier.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="34" column="38" lean-forward="true" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/options/AbstractOptionHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-476">
+              <caret line="34" column="22" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
+              <folding>
+                <element signature="e#13460#13461#0" expanded="true" />
+                <element signature="e#13487#13488#0" expanded="true" />
+                <element signature="e#13986#13987#0" expanded="true" />
+                <element signature="e#14030#14031#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/classifiers/MultiClassClassifier.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/classifiers/AbstractClassifier.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -87,8 +143,10 @@
         <option value="$PROJECT_DIR$/src/moa/classifiers/meta/ARFMC.java" />
         <option value="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java" />
         <option value="$PROJECT_DIR$/times.txt" />
-        <option value="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java" />
         <option value="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagB.java" />
+        <option value="$PROJECT_DIR$/src/moa/classifiers/AbstractCLassifier.java" />
+        <option value="$PROJECT_DIR$/src/moa/classifiers/AbstractClassifier.java" />
+        <option value="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java" />
       </list>
     </option>
   </component>
@@ -104,7 +162,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -128,6 +185,13 @@
               <item name="BaggingCores" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="moa" type="462c0819:PsiDirectoryNode" />
+              <item name="classifiers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BaggingCores" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BaggingCores" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="moa" type="462c0819:PsiDirectoryNode" />
               <item name="tasks" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -137,6 +201,11 @@
             <path>
               <item name="BaggingCores" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 1.8 &gt;" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="BaggingCores" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
               <item name="arpack_combined_all-0.1" type="70bed36:NamedLibraryElementNode" />
             </path>
             <path>
@@ -159,21 +228,13 @@
               <item name="moa.jar" type="462c0819:PsiDirectoryNode" />
               <item name="moa" type="462c0819:PsiDirectoryNode" />
               <item name="classifiers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BaggingCores" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="arpack_combined_all-0.1" type="70bed36:NamedLibraryElementNode" />
-              <item name="moa.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="moa" type="462c0819:PsiDirectoryNode" />
-              <item name="classifiers" type="462c0819:PsiDirectoryNode" />
-              <item name="meta" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -276,14 +337,20 @@
       <option name="project" value="LOCAL" />
       <updated>1562733446896</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Implementing a CPU timer and Custom Thread pools">
+      <created>1563331069460</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1563331069460</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1533" height="875" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19502354" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19771352" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -292,7 +359,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49562877" weight="0.32841823" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49697378" weight="0.22117962" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49697378" visible="true" weight="0.22117962" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -318,7 +385,9 @@
     <MESSAGE value="Made Name shorter" />
     <MESSAGE value="Fix'd Multi core L bagging class, was giving different accuracys each run, found out running a random number generator in parallel sometimes gives the same number to multiple classifiers so did the random generator outside of the threads before hand." />
     <MESSAGE value="converted OzaBagAdwin into multi-core" />
-    <option name="LAST_COMMIT_MESSAGE" value="converted OzaBagAdwin into multi-core" />
+    <MESSAGE value="Implementing a CPU timer and Custom Thread pools" />
+    <MESSAGE value="Added the first timer, (overall time) to my Interleaved class, also working on change the base classes for our Multi CPU timer as we need to have custom thread pools and therefore be able to have a finish method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the first timer, (overall time) to my Interleaved class, also working on change the base classes for our Multi CPU timer as we need to have custom thread pools and therefore be able to have a finish method" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/moa/classifiers/meta/BaggingCores.java" />
@@ -351,13 +420,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/t.java" />
-    <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/classifiers/AbstractClassifier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="177" column="12" selection-start-line="177" selection-start-column="12" selection-end-line="177" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/util/stream/IntStream.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -420,13 +482,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/options/AbstractOptionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="60" column="1" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/times.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -438,19 +493,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2681">
           <caret line="89" column="20" lean-forward="true" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="162" column="8" selection-start-line="162" selection-start-column="8" selection-end-line="162" selection-end-column="32" />
-          <folding>
-            <element signature="e#13460#13461#0" expanded="true" />
-            <element signature="e#13487#13488#0" expanded="true" />
-            <element signature="e#13986#13987#0" expanded="true" />
-            <element signature="e#14030#14031#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -474,28 +516,120 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1830">
+          <caret line="159" selection-start-line="159" selection-end-line="159" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/tasks/EvaluateInterleavedTestThenTrain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
+        <state relative-caret-position="1140">
           <caret line="117" column="33" selection-end-line="230" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/classifiers/bayes/NaiveBayes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="50" column="41" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/classifiers/AbstractClassifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/MOAObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/io/Serializable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/AbstractMOAObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="31" column="57" selection-start-line="31" selection-start-column="57" selection-end-line="31" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/options/AbstractOptionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-476">
+          <caret line="34" column="22" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/classifiers/MultiClassClassifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
+          <folding>
+            <element signature="e#13460#13461#0" expanded="true" />
+            <element signature="e#13487#13488#0" expanded="true" />
+            <element signature="e#13986#13987#0" expanded="true" />
+            <element signature="e#14030#14031#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/classifiers/Classifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="34" column="38" lean-forward="true" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/moa/classifiers/AbstractClassifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="54" column="25" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/learners/Learner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../moa-release-2019.05.0/src/moa-2019.05.0-sources.jar!/moa/core/Measurement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-600">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="112" selection-start-line="112" selection-end-line="112" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="172" column="33" selection-start-line="172" selection-start-column="33" selection-end-line="172" selection-end-column="33" />
+        <state relative-caret-position="120">
+          <caret line="158" column="47" lean-forward="true" selection-start-line="158" selection-start-column="47" selection-end-line="158" selection-end-column="47" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6280#6281#0" expanded="true" />
-            <element signature="e#6306#6307#0" expanded="true" />
+            <element signature="e#3826#3827#0" expanded="true" />
+            <element signature="e#3868#3869#0" expanded="true" />
           </folding>
         </state>
       </provider>
