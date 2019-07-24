@@ -1,0 +1,7 @@
+
+
+Track CPU times from the start of the train method to the end of each thread in parallel
+
+Also Track CPU times on the Test methods
+
+Make sure to add them up using the _cpuTime variable so that it is accurately returned to the GUI

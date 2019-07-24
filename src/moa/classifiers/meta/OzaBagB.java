@@ -92,6 +92,8 @@ public class OzaBagB extends AbstractClassifier implements MultiClassClassifier,
     protected Random _r;
     protected int[] _weight;
     protected ForkJoinPool _threadpool;
+    protected double _cpuTime;
+    protected double _t1;
 
     public int getCores(){
         return _coreAmountOption.getValue();
@@ -118,6 +120,11 @@ public class OzaBagB extends AbstractClassifier implements MultiClassClassifier,
 
     public void trainOnInstanceImpl(Instance inst) {
 
+        double t1 = System.currentTimeMillis();
+        _t1 = t1;
+
+
+
         int n = _classifiers.length;
         for (int i = 0; i < n; i++) _weight[i] = MiscUtils.poisson(1.0, _r);
 
@@ -128,18 +135,26 @@ public class OzaBagB extends AbstractClassifier implements MultiClassClassifier,
         }
     }
 
+    //send the overall CPU time of the parallel model to the Evaluator to update the stats in the GUI
+    public double getCpuTime(){
+        return _cpuTime;
+    }
 
     public void train(int index, Instance instance) {
+
         int k = _weight[index];
         if (k > 0) {
             Instance weightedInst = (Instance) instance.copy();
             weightedInst.setWeight(instance.weight() * k);
             _classifiers[index].trainOnInstance(weightedInst);
         }
+        double t2 = System.currentTimeMillis();
+        _cpuTime += (t2 - _t1);
     }
 
 
     public double[] getVotesForInstance(Instance instance) {
+        _t1 = System.currentTimeMillis();
 
         if (_parallelOption.isSet()) {
             double sum = 0.0;
@@ -161,6 +176,8 @@ public class OzaBagB extends AbstractClassifier implements MultiClassClassifier,
                 }
 
             }
+            double t2 = System.currentTimeMillis();
+            _cpuTime += (t2 - _t1);
             return votes;
 
         } else {
@@ -171,8 +188,11 @@ public class OzaBagB extends AbstractClassifier implements MultiClassClassifier,
                 combinedVote.addValues(vote);
             }
             combinedVote.normalize();
+            double t2 = System.currentTimeMillis();
+            _cpuTime += (t2 - _t1);
             return combinedVote.getArrayRef();
         }
+
     }
 
     // Avoids Thread Pool Leaking

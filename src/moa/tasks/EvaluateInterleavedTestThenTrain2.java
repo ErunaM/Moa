@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.TimeUnit;
 
 import moa.capabilities.Capability;
 import moa.capabilities.ImmutableCapabilities;
@@ -124,6 +125,7 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
 
         }
 
+        // Comment out before publishing
         System.out.println("Runtime Processors: " + Runtime.getRuntime().availableProcessors());
         ExampleStream stream = (InstanceStream) getPreparedClassOption(this.streamOption);
 
@@ -183,6 +185,14 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
                 RAMHoursIncrement *= (timeIncrement / 3600.0); //Hours
                 RAMHours += RAMHoursIncrement;
                 lastEvaluateStartTime = evaluateTime;
+
+                if(isInitialised){
+
+                    time = TimeUnit.MILLISECONDS.toSeconds((long)((InterfaceMT) learner).getCpuTime());
+
+
+                }
+
                 learningCurve.insertEntry(new LearningEvaluation(
                         new Measurement[]{
                                 new Measurement(
@@ -198,7 +208,7 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
                                         RAMHours),
                                 new Measurement(
                                         "Time Taken (Actual Time)"
-                                        ,timeTaken
+                                        , timeTaken
                                 )
                         },
                         evaluator, learner));

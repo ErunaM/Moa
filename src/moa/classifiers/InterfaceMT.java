@@ -10,5 +10,7 @@ public interface InterfaceMT {
 
      int getCores();
 
+     double getCpuTime();
+
 
 }
