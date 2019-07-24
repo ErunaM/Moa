@@ -6,5 +6,9 @@ public interface InterfaceMT {
 
      void ReceivePool(ForkJoinPool pool);
 
-     void ReleasePool();
+     void trainingHasEnded();
+
+     int getCores();
+
+
 }

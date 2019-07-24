@@ -22,9 +22,11 @@ package moa.tasks;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.util.concurrent.ForkJoinPool;
 
 import moa.capabilities.Capability;
 import moa.capabilities.ImmutableCapabilities;
+import moa.classifiers.InterfaceMT;
 import moa.classifiers.MultiClassClassifier;
 import moa.core.Example;
 import moa.core.Measurement;
@@ -111,6 +113,18 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
             learner.resetLearning();
         }
 
+        ForkJoinPool customPool;
+        boolean isInitialised = false;
+        if(learner instanceof InterfaceMT){
+            isInitialised = true;
+            customPool = new ForkJoinPool(((InterfaceMT) learner).getCores());
+
+            ((InterfaceMT) learner).ReceivePool(customPool);
+
+
+        }
+
+        System.out.println("Runtime Processors: " + Runtime.getRuntime().availableProcessors());
         ExampleStream stream = (InstanceStream) getPreparedClassOption(this.streamOption);
 
         LearningPerformanceEvaluator evaluator = (LearningPerformanceEvaluator) getPreparedClassOption(this.evaluatorOption);
@@ -224,6 +238,10 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
 
         if (immediateResultStream != null) {
             immediateResultStream.close();
+        }
+        if(isInitialised){
+            ((InterfaceMT)learner).trainingHasEnded();
+            //customPool.shutdown();
         }
         return learningCurve;
     }

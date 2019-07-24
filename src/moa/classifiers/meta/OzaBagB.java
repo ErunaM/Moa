@@ -25,6 +25,7 @@ import moa.classifiers.AbstractClassifier;
 import moa.classifiers.Classifier;
 import com.yahoo.labs.samoa.instances.Instance;
 
+import moa.classifiers.InterfaceMT;
 import moa.classifiers.MultiClassClassifier;
 import moa.core.DoubleVector;
 import moa.core.Measurement;
@@ -63,7 +64,7 @@ import java.util.stream.IntStream;
  * @author Richard Kirkby (rkirkby@cs.waikato.ac.nz)
  * @version $Revision: 7 $
  */
-public class OzaBagB extends AbstractClassifier implements MultiClassClassifier {
+public class OzaBagB extends AbstractClassifier implements MultiClassClassifier, InterfaceMT {
 
     public String getPurposeString() {
         return "Incremental on-line bagging of Oza and Russell.";
@@ -92,14 +93,18 @@ public class OzaBagB extends AbstractClassifier implements MultiClassClassifier 
     protected int[] _weight;
     protected ForkJoinPool _threadpool;
 
+    public int getCores(){
+        return _coreAmountOption.getValue();
+    }
+
     public void resetLearningImpl() {
         _r = new Random( _randomSeedOption.getValue());
         int ensembleSize = _ensembleSizeOption.getValue();
-        int cores = _coreAmountOption.getValue();
-        if(cores == 0){
-            _threadpool = new ForkJoinPool(_coreAmountOption.getMaxValue());
-        }else
-        _threadpool = new ForkJoinPool(cores); // how many worker threads to use e.g how many cores to use
+//        int cores = _coreAmountOption.getValue();
+//        if(cores == 0){
+//            _threadpool = new ForkJoinPool(_coreAmountOption.getMaxValue());
+//        }else
+//        _threadpool = new ForkJoinPool(cores); // how many worker threads to use e.g how many cores to use
 
         Classifier baseLearner = (Classifier) getPreparedClassOption(_baseLearnerOption);
         baseLearner.resetLearning();
@@ -171,8 +176,9 @@ public class OzaBagB extends AbstractClassifier implements MultiClassClassifier 
     }
 
     // Avoids Thread Pool Leaking
-    public void finishTraining(){
+    public void trainingHasEnded(){
         _threadpool.shutdown();
+
     }
 
     public boolean isRandomizable() {
@@ -190,6 +196,12 @@ public class OzaBagB extends AbstractClassifier implements MultiClassClassifier 
     public Classifier[] getSubClassifiers() {
         return Arrays.copyOf(_classifiers, _classifiers.length);
     }
+
+    public void ReceivePool(ForkJoinPool pool){
+        System.out.println("Start time");
+        _threadpool = pool;
+    }
+
 
     //======================================================================
     //
