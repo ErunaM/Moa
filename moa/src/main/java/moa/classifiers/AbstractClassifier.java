@@ -15,7 +15,7 @@
  *
  *    You should have received a copy of the GNU General Public License
  *    along with this program. If not, see <http://www.gnu.org/licenses/>.
- *    
+ *
  */
 
 package moa.classifiers;
@@ -87,7 +87,7 @@ public abstract class AbstractClassifier extends AbstractOptionHandler
 
     @Override
     public void prepareForUseImpl(TaskMonitor monitor,
-            ObjectRepository repository) {
+                                  ObjectRepository repository) {
         if (this.randomSeedOption != null) {
             this.randomSeed = this.randomSeedOption.getValue();
         }
@@ -96,28 +96,28 @@ public abstract class AbstractClassifier extends AbstractOptionHandler
         }
     }
 
-	
+
     @Override
     public double[] getVotesForInstance(Example<Instance> example){
-		return getVotesForInstance(example.getData());
-	}
+        return getVotesForInstance(example.getData());
+    }
 
     @Override
     public abstract double[] getVotesForInstance(Instance inst);
 
     @Override
     public Prediction getPredictionForInstance(Example<Instance> example){
-		return getPredictionForInstance(example.getData());
-	}
+        return getPredictionForInstance(example.getData());
+    }
 
     @Override
     public Prediction getPredictionForInstance(Instance inst){
-    	Prediction prediction= new MultiLabelPrediction(1);
-    	prediction.setVotes(getVotesForInstance(inst));
-    	return prediction;
+        Prediction prediction= new MultiLabelPrediction(1);
+        prediction.setVotes(getVotesForInstance(inst));
+        return prediction;
     }
 
-    
+
     @Override
     public void setModelContext(InstancesHeader ih) {
         if ((ih != null) && (ih.classIndex() < 0)) {
@@ -156,6 +156,8 @@ public abstract class AbstractClassifier extends AbstractOptionHandler
     public double trainingWeightSeenByModel() {
         return this.trainingWeightSeenByModel;
     }
+
+    public void trainingHasEnded(){}
 
     @Override
     public void resetLearning() {
@@ -226,28 +228,28 @@ public abstract class AbstractClassifier extends AbstractOptionHandler
     public Learner[] getSublearners() {
         return getSubClassifiers();
     }
-    
+
     @Override
     public Classifier[] getSubClassifiers() {
         return null;
     }
-    
-    
+
+
     @Override
     public Classifier copy() {
         return (Classifier) super.copy();
     }
 
-   
+
     @Override
     public MOAObject getModel(){
         return this;
     };
-    
+
     @Override
     public void trainOnInstance(Example<Instance> example){
-		trainOnInstance(example.getData());
-	}
+        trainOnInstance(example.getData());
+    }
 
     @Override
     public boolean correctlyClassifies(Instance inst) {
@@ -316,7 +318,7 @@ public abstract class AbstractClassifier extends AbstractOptionHandler
      * @return true if the two contexts are compatible.
      */
     public static boolean contextIsCompatible(InstancesHeader originalContext,
-            InstancesHeader newContext) {
+                                              InstancesHeader newContext) {
 
         if (newContext.numClasses() < originalContext.numClasses()) {
             return false; // rule 1
@@ -371,18 +373,18 @@ public abstract class AbstractClassifier extends AbstractOptionHandler
     /**
      * Resets this classifier. It must be similar to
      * starting a new classifier from scratch. <br><br>
-     * 
-     * The reason for ...Impl methods: ease programmer burden by not requiring 
-     * them to remember calls to super in overridden methods. 
+     *
+     * The reason for ...Impl methods: ease programmer burden by not requiring
+     * them to remember calls to super in overridden methods.
      * Note that this will produce compiler errors if not overridden.
      */
     public abstract void resetLearningImpl();
 
     /**
      * Trains this classifier incrementally using the given instance.<br><br>
-     * 
-     * The reason for ...Impl methods: ease programmer burden by not requiring 
-     * them to remember calls to super in overridden methods. 
+     *
+     * The reason for ...Impl methods: ease programmer burden by not requiring
+     * them to remember calls to super in overridden methods.
      * Note that this will produce compiler errors if not overridden.
      *
      * @param inst the instance to be used for training
@@ -391,9 +393,9 @@ public abstract class AbstractClassifier extends AbstractOptionHandler
 
     /**
      * Gets the current measurements of this classifier.<br><br>
-     * 
-     * The reason for ...Impl methods: ease programmer burden by not requiring 
-     * them to remember calls to super in overridden methods. 
+     *
+     * The reason for ...Impl methods: ease programmer burden by not requiring
+     * them to remember calls to super in overridden methods.
      * Note that this will produce compiler errors if not overridden.
      *
      * @return an array of measurements to be used in evaluation tasks
@@ -417,20 +419,20 @@ public abstract class AbstractClassifier extends AbstractOptionHandler
      * @return the index in the instance
      */
     protected static int modelAttIndexToInstanceAttIndex(int index,
-            Instance inst) {
+                                                         Instance inst) {
         return inst.classIndex() > index ? index : index + 1;
     }
 
     /**
      * Gets the index of the attribute in a set of instances,
      * given the index of the attribute in the learner.
-     * 
+     *
      * @param index the index of the attribute in the learner
      * @param insts the instances
      * @return the index of the attribute in the instances
      */
     protected static int modelAttIndexToInstanceAttIndex(int index,
-            Instances insts) {
+                                                         Instances insts) {
         return insts.classIndex() > index ? index : index + 1;
     }
 
