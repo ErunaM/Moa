@@ -2,7 +2,7 @@ package moa.classifiers;
 
 import java.util.concurrent.ForkJoinPool;
 
-public interface InterfaceMT {
+public interface Multithreading {
 
      void ReceivePool(ForkJoinPool pool);
 

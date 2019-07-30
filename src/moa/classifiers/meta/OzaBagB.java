@@ -25,7 +25,7 @@ import moa.classifiers.AbstractClassifier;
 import moa.classifiers.Classifier;
 import com.yahoo.labs.samoa.instances.Instance;
 
-import moa.classifiers.InterfaceMT;
+import moa.classifiers.Multithreading;
 import moa.classifiers.MultiClassClassifier;
 import moa.core.DoubleVector;
 import moa.core.Measurement;
@@ -35,8 +35,6 @@ import com.github.javacliparser.IntOption;
 import com.github.javacliparser.FlagOption;
 
 import java.util.Random;
-import java.util.List;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.ForkJoinPool;
 import java.util.stream.IntStream;
@@ -64,7 +62,7 @@ import java.util.stream.IntStream;
  * @author Richard Kirkby (rkirkby@cs.waikato.ac.nz)
  * @version $Revision: 7 $
  */
-public class OzaBagB extends AbstractClassifier implements MultiClassClassifier, InterfaceMT {
+public class OzaBagB extends AbstractClassifier implements MultiClassClassifier, Multithreading {
 
     public String getPurposeString() {
         return "Incremental on-line bagging of Oza and Russell.";

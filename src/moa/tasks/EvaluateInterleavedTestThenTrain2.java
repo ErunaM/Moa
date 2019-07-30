@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
 
 import moa.capabilities.Capability;
 import moa.capabilities.ImmutableCapabilities;
-import moa.classifiers.InterfaceMT;
+import moa.classifiers.Multithreading;
 import moa.classifiers.MultiClassClassifier;
 import moa.core.Example;
 import moa.core.Measurement;
@@ -116,11 +116,11 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
 
         ForkJoinPool customPool;
         boolean isInitialised = false;
-        if(learner instanceof InterfaceMT){
+        if(learner instanceof Multithreading){
             isInitialised = true;
-            customPool = new ForkJoinPool(((InterfaceMT) learner).getCores());
+            customPool = new ForkJoinPool(((Multithreading) learner).getCores());
 
-            ((InterfaceMT) learner).ReceivePool(customPool);
+            ((Multithreading) learner).ReceivePool(customPool);
 
 
         }
@@ -188,7 +188,7 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
 
                 if(isInitialised){
 
-                    time = TimeUnit.MILLISECONDS.toSeconds((long)((InterfaceMT) learner).getCpuTime());
+                    time = TimeUnit.MILLISECONDS.toSeconds((long)((Multithreading) learner).getCpuTime());
 
 
                 }
@@ -199,15 +199,15 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
                                         "learning evaluation instances",
                                         instancesProcessed),
                                 new Measurement(
-                                        "evaluation time ("
-                                                + (preciseCPUTiming ? "cpu "
+                                        "CPU TIME ("
+                                                + (preciseCPUTiming ? ""
                                                 : "") + "seconds)",
                                         time),
                                 new Measurement(
                                         "model cost (RAM-Hours)",
                                         RAMHours),
                                 new Measurement(
-                                        "Time Taken (Actual Time)"
+                                        "Wall Time (Actual Time)"
                                         , timeTaken
                                 )
                         },
@@ -250,7 +250,7 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
             immediateResultStream.close();
         }
         if(isInitialised){
-            ((InterfaceMT)learner).trainingHasEnded();
+            ((Multithreading)learner).trainingHasEnded();
             //customPool.shutdown();
         }
         return learningCurve;
