@@ -22,9 +22,11 @@ package moa.tasks;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.TimeUnit;
 
+import moa.CustomThreadPool;
 import moa.capabilities.Capability;
 import moa.capabilities.ImmutableCapabilities;
 import moa.classifiers.Multithreading;
@@ -114,11 +116,20 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
             learner.resetLearning();
         }
 
+        CustomThreadPool cp = new CustomThreadPool(1);
         ForkJoinPool customPool;
         boolean isInitialised = false;
         if(learner instanceof Multithreading){
             isInitialised = true;
+            cp = new CustomThreadPool(((Multithreading) learner).getCores());
             customPool = new ForkJoinPool(((Multithreading) learner).getCores());
+            try {
+                cp.getThreadIDs();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
             ((Multithreading) learner).ReceivePool(customPool);
 
@@ -187,8 +198,14 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
                 lastEvaluateStartTime = evaluateTime;
 
                 if(isInitialised){
+                    long cpuTime =0;
+                    long[] ids = cp.threadIDs;
+                    for(int i = 0; i < ids.length; i++){
+                        System.out.println(ids[i]);
+                        cpuTime += TimingUtils.nanoTimeToSeconds(TimingUtils.getNanoCPUTimeOfThread(ids[i]));
 
-                    time = TimeUnit.MILLISECONDS.toSeconds((long)((Multithreading) learner).getCpuTime());
+                    }
+                    time = cpuTime/1000;
 
 
                 }
