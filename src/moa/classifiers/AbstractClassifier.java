@@ -24,6 +24,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ExecutionException;
 
 import moa.MOAObject;
 import moa.capabilities.CapabilitiesHandler;
@@ -177,7 +178,13 @@ public abstract class AbstractClassifier extends AbstractOptionHandler
         }
         if (isTraining) {
             this.trainingWeightSeenByModel += inst.weight();
-            trainOnInstanceImpl(inst);
+            try {
+                trainOnInstanceImpl(inst);
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -389,7 +396,7 @@ public abstract class AbstractClassifier extends AbstractOptionHandler
      *
      * @param inst the instance to be used for training
      */
-    public abstract void trainOnInstanceImpl(Instance inst);
+    public abstract void trainOnInstanceImpl(Instance inst) throws ExecutionException, InterruptedException;
 
     /**
      * Gets the current measurements of this classifier.<br><br>

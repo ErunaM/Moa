@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed62ce1e-7bf1-483f-96ab-e87915a8012d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/moa/CustomThreadPool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/META-INF/BaggingCores.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/OzaBagB$Predictor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/OzaBagB$Predictor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/OzaBagB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/OzaBagB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/InterfaceMT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/Multithreading.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/AbstractClassifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/AbstractClassifier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java" afterDir="false" />
     </list>
@@ -26,13 +24,6 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>par</find>
-      <find>System</find>
-      <find>trainingHas</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -46,7 +37,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Moa-full-moa-project" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -172,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563967906008</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Fixing up some names.&#10;&#10;TODO: Change CPU time measurement to use Thread IDS">
+      <created>1564451103094</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1564451103094</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -200,7 +198,8 @@
     <MESSAGE value="Adding the interface for my multi-thread classes" />
     <MESSAGE value="Pushing Progress on CPU time measurements" />
     <MESSAGE value="Finished an Implementation of CPU time tracking, Currently working when using EvaluateInterleavedTestThenTrain2 with the OzaBagB algorithm" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished an Implementation of CPU time tracking, Currently working when using EvaluateInterleavedTestThenTrain2 with the OzaBagB algorithm" />
+    <MESSAGE value="Fixing up some names.&#10;&#10;TODO: Change CPU time measurement to use Thread IDS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing up some names.&#10;&#10;TODO: Change CPU time measurement to use Thread IDS" />
   </component>
   <component name="masterDetails">
     <states>

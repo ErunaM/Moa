@@ -200,7 +200,8 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
                                         instancesProcessed),
                                 new Measurement(
                                         "CPU TIME ("
-                                                + (preciseCPUTiming ? ""
+                                                + (preciseCPUTiming ? "" +
+                                                ""
                                                 : "") + "seconds)",
                                         time),
                                 new Measurement(

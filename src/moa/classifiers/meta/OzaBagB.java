@@ -36,6 +36,7 @@ import com.github.javacliparser.FlagOption;
 
 import java.util.Random;
 import java.util.Arrays;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.stream.IntStream;
 
@@ -116,7 +117,7 @@ public class OzaBagB extends AbstractClassifier implements MultiClassClassifier,
     }
 
 
-    public void trainOnInstanceImpl(Instance inst) {
+    public void trainOnInstanceImpl(Instance inst) throws ExecutionException, InterruptedException {
 
         double t1 = System.currentTimeMillis();
         _t1 = t1;
@@ -127,7 +128,9 @@ public class OzaBagB extends AbstractClassifier implements MultiClassClassifier,
         for (int i = 0; i < n; i++) _weight[i] = MiscUtils.poisson(1.0, _r);
 
         if (_parallelOption.isSet()) {
-            IntStream.range(0, n).parallel().forEach(i -> train(i, inst));
+
+            _threadpool.submit(() -> IntStream.range(0, n).parallel().forEach(i -> train(i, inst))).get();
+
         } else {
             for (int i = 0; i < n; i++) train(i, inst);
         }
