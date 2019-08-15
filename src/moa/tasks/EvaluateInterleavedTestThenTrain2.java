@@ -165,6 +165,7 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
                         "Unable to open immediate result file: " + dumpFile, ex);
             }
         }
+        double time = 0;
         boolean firstDump = true;
         boolean preciseCPUTiming = TimingUtils.enablePreciseTiming();
         float timeTaken = 0;
@@ -188,7 +189,7 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
             if (instancesProcessed % this.sampleFrequencyOption.getValue() == 0
                     ||  stream.hasMoreInstances() == false) {
                 long evaluateTime = TimingUtils.getNanoCPUTimeOfCurrentThread();
-                double time = TimingUtils.nanoTimeToSeconds(evaluateTime - evaluateStartTime);
+
                 long t2 = System.currentTimeMillis();
                 timeTaken = (t2-t1)/1000F;
                 double timeIncrement = TimingUtils.nanoTimeToSeconds(evaluateTime - lastEvaluateStartTime);
@@ -199,13 +200,22 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
 
                 if(isInitialised){
                     long cpuTime =0;
+                    try {
+                        cp.getThreadIDs();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     long[] ids = cp.threadIDs;
                     for(int i = 0; i < ids.length; i++){
-                        System.out.println(ids[i]);
-                        cpuTime += TimingUtils.nanoTimeToSeconds(TimingUtils.getNanoCPUTimeOfThread(ids[i]));
+                        //System.out.println(ids[i]);
+                        //System.out.println(TimingUtils.getNanoCPUTimeOfThread(ids[i]));
+                        cpuTime += TimingUtils.getNanoCPUTimeOfThread(ids[i]);
 
                     }
-                    time = cpuTime/1000;
+                    System.out.println(cpuTime/100000.0);
+                    time += cpuTime/100000.0;
 
 
                 }
