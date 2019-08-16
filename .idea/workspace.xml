@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ed62ce1e-7bf1-483f-96ab-e87915a8012d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagMC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagBMod1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagBMod2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagCores.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -181,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565521004824</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Possible Working Version of CPU time tracking (Currently only working for OzaBagB)">
+      <created>1565830317763</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1565830317763</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -212,7 +224,8 @@
     <MESSAGE value="Fixing up some names.&#10;&#10;TODO: Change CPU time measurement to use Thread IDS" />
     <MESSAGE value="OzaBagB changed to use the custom thread pool" />
     <MESSAGE value="EvaluatedInterleavedTestThenTrain2 updated to implement a proper version of CPU timing where we track each thread that is used and get the time of each.&#10;&#10;Currently bugged where the time increases fine for 3 printouts then just prints the same number untill the algorithm finishes" />
-    <option name="LAST_COMMIT_MESSAGE" value="EvaluatedInterleavedTestThenTrain2 updated to implement a proper version of CPU timing where we track each thread that is used and get the time of each.&#10;&#10;Currently bugged where the time increases fine for 3 printouts then just prints the same number untill the algorithm finishes" />
+    <MESSAGE value="Possible Working Version of CPU time tracking (Currently only working for OzaBagB)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Possible Working Version of CPU time tracking (Currently only working for OzaBagB)" />
   </component>
   <component name="masterDetails">
     <states>

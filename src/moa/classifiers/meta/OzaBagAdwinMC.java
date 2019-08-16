@@ -24,6 +24,7 @@ import moa.capabilities.CapabilitiesHandler;
 import moa.capabilities.Capability;
 import moa.capabilities.ImmutableCapabilities;
 import moa.classifiers.MultiClassClassifier;
+import moa.classifiers.Multithreading;
 import moa.classifiers.core.driftdetection.ADWIN;
 import moa.classifiers.AbstractClassifier;
 import moa.classifiers.Classifier;
@@ -35,6 +36,8 @@ import moa.core.MiscUtils;
 import moa.options.ClassOption;
 import com.github.javacliparser.IntOption;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ForkJoinPool;
 import java.util.stream.IntStream;
 
 /**
@@ -87,7 +90,7 @@ import java.util.stream.IntStream;
  * @version $Revision: 7 $
  */
 public class OzaBagAdwinMC extends AbstractClassifier implements MultiClassClassifier,
-        CapabilitiesHandler {
+        CapabilitiesHandler, Multithreading {
 
     private static final long serialVersionUID = 1L;
 
@@ -102,6 +105,10 @@ public class OzaBagAdwinMC extends AbstractClassifier implements MultiClassClass
     public IntOption ensembleSizeOption = new IntOption("ensembleSize", 's',
             "The number of models in the bag.", 10, 1, Integer.MAX_VALUE);
 
+    public IntOption _coreAmountOption = new IntOption("NumberOfCores", 'z',
+            "The amount of cores to use for parallelism, Note: The max accounts for physical and virtual Cores", 1, 0, Runtime.getRuntime().availableProcessors());
+
+
     protected Classifier[] ensemble;
 
     protected ADWIN[] ADError;
@@ -112,6 +119,8 @@ public class OzaBagAdwinMC extends AbstractClassifier implements MultiClassClass
 
     public FlagOption _parallelOption = new FlagOption("parallel", 'p',
             "Run ensemble in parallel.");
+
+    protected ForkJoinPool _threadpool;
 
     @Override
     public void resetLearningImpl() {
@@ -129,7 +138,7 @@ public class OzaBagAdwinMC extends AbstractClassifier implements MultiClassClass
     }
 
     @Override
-    public void trainOnInstanceImpl(Instance inst) {
+    public void trainOnInstanceImpl(Instance inst) throws ExecutionException, InterruptedException {
         boolean Change = false;
         _Change = false;
         if (_parallelOption.isSet()) {
@@ -140,7 +149,7 @@ public class OzaBagAdwinMC extends AbstractClassifier implements MultiClassClass
 
 
             int n = ensemble.length;
-            IntStream.range(0, n).parallel().forEach(i -> train(i, inst));
+            _threadpool.submit(() -> IntStream.range(0, n).parallel().forEach(i -> train(i, inst))).get();
         }else{
             for (int i = 0; i < this.ensemble.length; i++) {
                 int k = MiscUtils.poisson(1.0, this.classifierRandom);
@@ -237,5 +246,22 @@ public class OzaBagAdwinMC extends AbstractClassifier implements MultiClassClass
             return new ImmutableCapabilities(Capability.VIEW_STANDARD, Capability.VIEW_LITE);
         else
             return new ImmutableCapabilities(Capability.VIEW_STANDARD);
+    }
+
+    @Override
+    public void ReceivePool(ForkJoinPool pool) {
+        System.out.println("Start time");
+        _threadpool = pool;
+
+    }
+
+    @Override
+    public int getCores() {
+        return _coreAmountOption.getValue();
+    }
+
+    @Override
+    public double getCpuTime() {
+        return 0;
     }
 }

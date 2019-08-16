@@ -27,6 +27,7 @@ import moa.capabilities.Capability;
 import moa.capabilities.ImmutableCapabilities;
 import moa.classifiers.AbstractClassifier;
 import moa.classifiers.MultiClassClassifier;
+import moa.classifiers.Multithreading;
 import moa.options.ClassOption;
 import com.github.javacliparser.MultiChoiceOption;
 import moa.classifiers.core.driftdetection.ADWIN;
@@ -37,6 +38,8 @@ import moa.core.DoubleVector;
 import moa.core.Measurement;
 import moa.core.MiscUtils;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ForkJoinPool;
 import java.util.stream.IntStream;
 
 /**
@@ -51,7 +54,7 @@ import java.util.stream.IntStream;
  * @version $Revision: 7 $
  */
 public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
-        CapabilitiesHandler {
+        CapabilitiesHandler, Multithreading {
 
     private static final long serialVersionUID = 1L;
 
@@ -62,6 +65,10 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
 
     public ClassOption baseLearnerOption = new ClassOption("baseLearner", 'l',
             "Classifier to train.", Classifier.class, "trees.HoeffdingTree");
+
+    public IntOption _coreAmountOption = new IntOption("NumberOfCores", 'z',
+            "The amount of cores to use for parallelism, Note: The max accounts for physical and virtual Cores", 1, 0, Runtime.getRuntime().availableProcessors());
+
 
     public IntOption ensembleSizeOption = new IntOption("ensembleSize", 's',
             "The number of models in the bag.", 10, 1, Integer.MAX_VALUE);
@@ -103,6 +110,8 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
 
     protected boolean _Change = false;
 
+    protected ForkJoinPool _threadpool;
+
     @Override
     public void resetLearningImpl() {
         this.ensemble = new Classifier[this.ensembleSizeOption.getValue()];
@@ -123,7 +132,7 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
     }
 
     @Override
-    public void trainOnInstanceImpl(Instance inst) {
+    public void trainOnInstanceImpl(Instance inst) throws ExecutionException, InterruptedException {
         int numClasses = inst.numClasses();
         //Output Codes
         if (this.initMatrixCodes) {
@@ -189,7 +198,7 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
                 }
                 randomPoissonArray[i] = k;
             }
-            IntStream.range(0, n).parallel().forEach(i -> train(i, inst));
+            _threadpool.submit(() -> IntStream.range(0, n).parallel().forEach(i -> train(i, inst))).get();
 
         }else{
             //Train ensemble of classifiers
@@ -348,6 +357,23 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
             return new ImmutableCapabilities(Capability.VIEW_STANDARD, Capability.VIEW_LITE);
         else
             return new ImmutableCapabilities(Capability.VIEW_STANDARD);
+    }
+
+    @Override
+    public void ReceivePool(ForkJoinPool pool) {
+
+        System.out.println("Start time");
+        _threadpool = pool;
+    }
+
+    @Override
+    public int getCores() {
+        return _coreAmountOption.getValue();
+    }
+
+    @Override
+    public double getCpuTime() {
+        return 0;
     }
 }
 

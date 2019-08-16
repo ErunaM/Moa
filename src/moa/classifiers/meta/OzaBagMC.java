@@ -63,7 +63,7 @@ import java.util.stream.IntStream;
  * @author Richard Kirkby (rkirkby@cs.waikato.ac.nz)
  * @version $Revision: 7 $
  */
-public class OzaBagB extends AbstractClassifier implements MultiClassClassifier, Multithreading {
+public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier, Multithreading {
 
     public String getPurposeString() {
         return "Incremental on-line bagging of Oza and Russell.";
