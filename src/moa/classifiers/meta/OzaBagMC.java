@@ -119,17 +119,12 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
 
     public void trainOnInstanceImpl(Instance inst) throws ExecutionException, InterruptedException {
 
-        double t1 = System.currentTimeMillis();
-        _t1 = t1;
-
-
-
         int n = _classifiers.length;
         for (int i = 0; i < n; i++) _weight[i] = MiscUtils.poisson(1.0, _r);
 
         if (_parallelOption.isSet()) {
 
-            _threadpool.submit(() -> IntStream.range(0, n).parallel().forEach(i -> train(i, inst))).get();
+            IntStream.range(0, n).parallel().forEach(i -> train(i, inst));
 
         } else {
             for (int i = 0; i < n; i++) train(i, inst);
@@ -149,8 +144,7 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
             weightedInst.setWeight(instance.weight() * k);
             _classifiers[index].trainOnInstance(weightedInst);
         }
-        double t2 = System.currentTimeMillis();
-        _cpuTime += (t2 - _t1);
+
     }
 
 

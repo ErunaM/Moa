@@ -198,7 +198,7 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
                 }
                 randomPoissonArray[i] = k;
             }
-            _threadpool.submit(() -> IntStream.range(0, n).parallel().forEach(i -> train(i, inst))).get();
+            IntStream.range(0, n).parallel().forEach(i -> train(i, inst));
 
         }else{
             //Train ensemble of classifiers

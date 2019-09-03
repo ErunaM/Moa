@@ -149,7 +149,7 @@ public class OzaBagAdwinMC extends AbstractClassifier implements MultiClassClass
 
 
             int n = ensemble.length;
-            _threadpool.submit(() -> IntStream.range(0, n).parallel().forEach(i -> train(i, inst))).get();
+            IntStream.range(0, n).parallel().forEach(i -> train(i, inst));
         }else{
             for (int i = 0; i < this.ensemble.length; i++) {
                 int k = MiscUtils.poisson(1.0, this.classifierRandom);

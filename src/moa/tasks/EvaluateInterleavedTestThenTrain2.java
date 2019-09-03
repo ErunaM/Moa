@@ -119,22 +119,22 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
         CustomThreadPool cp = new CustomThreadPool(1);
         ForkJoinPool customPool;
         boolean isInitialised = false;
-        if(learner instanceof Multithreading){
-            isInitialised = true;
-            cp = new CustomThreadPool(((Multithreading) learner).getCores());
-            customPool = new ForkJoinPool(((Multithreading) learner).getCores());
-            try {
-                cp.getThreadIDs();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            ((Multithreading) learner).ReceivePool(customPool);
-
-
-        }
+//        if(learner instanceof Multithreading){
+//            isInitialised = true;
+//            cp = new CustomThreadPool(((Multithreading) learner).getCores());
+//            customPool = new ForkJoinPool(((Multithreading) learner).getCores());
+//            try {
+//                cp.getThreadIDs();
+//            } catch (ExecutionException e) {
+//                e.printStackTrace();
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//
+//            ((Multithreading) learner).ReceivePool(customPool);
+//
+//
+//        }
 
         // Comment out before publishing
         System.out.println("Runtime Processors: " + Runtime.getRuntime().availableProcessors());
@@ -191,34 +191,35 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
                 long evaluateTime = TimingUtils.getNanoCPUTimeOfCurrentThread();
 
                 long t2 = System.currentTimeMillis();
-                timeTaken = (t2-t1)/1000F;
+
                 double timeIncrement = TimingUtils.nanoTimeToSeconds(evaluateTime - lastEvaluateStartTime);
                 double RAMHoursIncrement = learner.measureByteSize() / (1024.0 * 1024.0 * 1024.0); //GBs
                 RAMHoursIncrement *= (timeIncrement / 3600.0); //Hours
                 RAMHours += RAMHoursIncrement;
                 lastEvaluateStartTime = evaluateTime;
 
-                if(isInitialised){
-                    long cpuTime =0;
-                    try {
-                        cp.getThreadIDs();
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    long[] ids = cp.threadIDs;
-                    for(int i = 0; i < ids.length; i++){
-                        //System.out.println(ids[i]);
-                        //System.out.println(TimingUtils.getNanoCPUTimeOfThread(ids[i]));
-                        cpuTime += TimingUtils.getNanoCPUTimeOfThread(ids[i]);
-
-                    }
-                    System.out.println(cpuTime/100000.0);
-                    time += cpuTime/100000.0;
-
-
-                }
+//                if(isInitialised){
+//                    long cpuTime =0;
+//                    try {
+//                        cp.getThreadIDs();
+//                    } catch (ExecutionException e) {
+//                        e.printStackTrace();
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                    long[] ids = cp.threadIDs;
+//                    for(int i = 0; i < ids.length; i++){
+//                        //System.out.println(ids[i]);
+//                        //System.out.println(TimingUtils.getNanoCPUTimeOfThread(ids[i]));
+//                        cpuTime += TimingUtils.getNanoCPUTimeOfThread(ids[i]);
+//
+//                    }
+//                    System.out.println(cpuTime/100000.0);
+//                    time += cpuTime/100000.0;
+//
+//
+//                }
+                timeTaken = (t2-t1)/1000F;
 
                 learningCurve.insertEntry(new LearningEvaluation(
                         new Measurement[]{
