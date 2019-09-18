@@ -123,6 +123,8 @@ public class OzaBagAdwinMC extends AbstractClassifier implements MultiClassClass
 
     protected ForkJoinPool _threadpool;
 
+    protected HashSet<Integer> threadIDSet;
+
     @Override
     public void resetLearningImpl() {
         _randomPoissonArray = new double[this.ensembleSizeOption.getValue()];
@@ -190,6 +192,7 @@ public class OzaBagAdwinMC extends AbstractClassifier implements MultiClassClass
 
     public void train(int i, Instance inst) {
         double k = _randomPoissonArray[i];
+        threadIDSet.add((int) Thread.currentThread().getId());
 
         if (k > 0) {
             Instance weightedInst = (Instance) inst.copy();
@@ -259,6 +262,8 @@ public class OzaBagAdwinMC extends AbstractClassifier implements MultiClassClass
     @Override
     public void ReceiveHashSet() {
 
+        threadIDSet = new HashSet<Integer>();
+
     }
 
     @Override
@@ -268,7 +273,7 @@ public class OzaBagAdwinMC extends AbstractClassifier implements MultiClassClass
 
     @Override
     public HashSet<Integer> getCpuTime() {
-        return null;
+        return threadIDSet;
     }
 
     @Override

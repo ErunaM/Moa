@@ -113,6 +113,8 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
 
     protected ForkJoinPool _threadpool;
 
+    protected HashSet<Integer> threadIDSet;
+
     @Override
     public void resetLearningImpl() {
         this.ensemble = new Classifier[this.ensembleSizeOption.getValue()];
@@ -265,6 +267,7 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
 
     public void train(int index, Instance instance) {
 
+        threadIDSet.add((int) Thread.currentThread().getId());
         double w = this.weightShrinkOption.getValue();
         Instance weightedInst = (Instance) instance.copy();
         double k = this.randomPoissonArray[index];
@@ -370,6 +373,8 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
     @Override
     public void ReceiveHashSet() {
 
+        threadIDSet = new HashSet<Integer>();
+
     }
 
     @Override
@@ -379,7 +384,7 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
 
     @Override
     public HashSet<Integer> getCpuTime() {
-        return null;
+        return threadIDSet;
     }
 
     @Override

@@ -152,11 +152,8 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
 
 
     public void train(int index, Instance instance) {
-        // make hashSet of thread IDs
+
         threadIDSet.add((int) Thread.currentThread().getId());
-       // System.out.println("ID: " + Thread.currentThread().getId());
-        //System.out.println("Time: " + TimingUtils.nanoTimeToSeconds(TimingUtils.getNanoCPUTimeOfCurrentThread()));
-       // System.out.println("Thread ID Time: " + TimingUtils.nanoTimeToSeconds(TimingUtils.getNanoCPUTimeOfThread(Thread.currentThread().getId())));
 
         int k = _weight[index];
         if (k > 0) {
@@ -168,23 +165,13 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
 //        _cpuTime += (t2 - _t1);
     }
 
+    //Initial Method Of algorithm incase developers want to use it.
     public void init() throws InterruptedException, ExecutionException {
-//        _threadpool.submit(() -> IntStream.range(0, _coreAmountOption.getValue() + 2).parallel().forEach(i -> {
-//            try {
-//                System.out.println("Init IDS: " + Thread.currentThread().getId());
-//
-//                Thread.sleep(10000);
-//
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        })).get();;
-//        Thread.sleep(2000);
+
     }
 
 
     public double[] getVotesForInstance(Instance instance) {
-//        _t1 = System.currentTimeMillis();
 
         if (_parallelOption.isSet()) {
             double sum = 0.0;
@@ -196,18 +183,16 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
                     .getVotes();
 
             for (double v: votes) sum += v;
-       //    sum = Arrays.stream(votes).parallel().reduce(0,Double::sum);
+
             if (sum > 0.0) {
                 sum = 1.0/sum;
                 final double sumF = sum;
-//                votes = Arrays.stream(votes).parallel().map(i -> i* sumF).toArray();
+
                 for (int i = 0; i < votes.length; i++) {
                     votes[i] *= sum;
                 }
 
             }
-//            double t2 = System.currentTimeMillis();
-//            _cpuTime += (t2 - _t1);
             return votes;
 
         } else {
