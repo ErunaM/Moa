@@ -38,6 +38,7 @@ import moa.core.DoubleVector;
 import moa.core.Measurement;
 import moa.core.MiscUtils;
 
+import java.util.HashSet;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.stream.IntStream;
@@ -367,13 +368,23 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
     }
 
     @Override
+    public void ReceiveHashSet() {
+
+    }
+
+    @Override
     public int getCores() {
         return _coreAmountOption.getValue();
     }
 
     @Override
-    public double getCpuTime() {
-        return 0;
+    public HashSet<Integer> getCpuTime() {
+        return null;
+    }
+
+    @Override
+    public void init() throws InterruptedException, ExecutionException {
+
     }
 }
 

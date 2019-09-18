@@ -1,5 +1,7 @@
 package moa;
 
+import moa.core.TimingUtils;
+
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.stream.IntStream;
@@ -20,6 +22,7 @@ public class CustomThreadPool {
         pool.submit(() -> IntStream.range(0, size_).parallel().forEach(i -> {
             try {
                 train(i);
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -29,8 +32,11 @@ public class CustomThreadPool {
     }
 
     private void train(int i) throws InterruptedException {
-        threadIDs[i] = Thread.currentThread().getId();
-        Thread.sleep(1000);
+        TimingUtils.enablePreciseTiming();
+        //threadIDs[i] = Thread.currentThread().getId();
+        //System.out.println("Init IDS: " + Thread.currentThread().getId());
+
+       // Thread.sleep(1500);
 
 
     }

@@ -22,6 +22,7 @@ package moa.tasks;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.util.HashSet;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.TimeUnit;
@@ -104,7 +105,8 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
 
     @Override
     protected Object doMainTask(TaskMonitor monitor, ObjectRepository repository) {
-
+        //System.out.println("Main Thread: "+ Thread.currentThread().getId() );
+        HashSet<Integer> threadIDSet = new HashSet<Integer>();
         String learnerString = this.learnerOption.getValueAsCLIString();
         String streamString = this.streamOption.getValueAsCLIString();
         //this.learnerOption.setValueViaCLIString(this.learnerOption.getValueAsCLIString() + " -r " +this.randomSeedOption);
@@ -132,6 +134,8 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
             }
 
             ((Multithreading) learner).ReceivePool(customPool);
+
+                ((Multithreading) learner).ReceiveHashSet();
 
 
         }
@@ -167,7 +171,7 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
         }
         double time = 0;
         boolean firstDump = true;
-        boolean preciseCPUTiming = TimingUtils.enablePreciseTiming();
+        boolean preciseCPUTiming =  false;//TimingUtils.enablePreciseTiming();
         float timeTaken = 0;
         long t1 = System.currentTimeMillis();
         long evaluateStartTime = TimingUtils.getNanoCPUTimeOfCurrentThread();
@@ -207,15 +211,17 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    long[] ids = cp.threadIDs;
+
+                    Multithreading tempLearner = ((Multithreading) learner);
+                    Integer[] ids =  tempLearner.getCpuTime().toArray(new Integer[tempLearner.getCpuTime().size()]);
                     for(int i = 0; i < ids.length; i++){
                         //System.out.println(ids[i]);
                         //System.out.println(TimingUtils.getNanoCPUTimeOfThread(ids[i]));
                         cpuTime += TimingUtils.getNanoCPUTimeOfThread(ids[i]);
 
                     }
-                    System.out.println(cpuTime/100000.0);
-                    time += cpuTime/100000.0;
+                    System.out.println(cpuTime);
+                    time = TimingUtils.nanoTimeToSeconds(cpuTime);
 
 
                 }

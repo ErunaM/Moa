@@ -34,6 +34,7 @@ import moa.options.ClassOption;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.FlagOption;
 
+import java.util.HashSet;
 import java.util.Random;
 import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
@@ -93,6 +94,7 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
     protected ForkJoinPool _threadpool;
     protected double _cpuTime;
     protected double _t1;
+    protected HashSet<Integer> threadIDSet;
 
     public int getCores(){
         return _coreAmountOption.getValue();
@@ -129,7 +131,14 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
 
         if (_parallelOption.isSet()) {
 
-            _threadpool.submit(() -> IntStream.range(0, n).parallel().forEach(i -> train(i, inst))).get();
+            try{
+            _threadpool.submit(() -> IntStream.range(0, n).parallel().forEach(i -> train(i, inst))).get();}
+            catch (ExecutionException e){
+                System.out.println(_threadpool);
+                 System.out.println(_classifiers.length);
+                System.out.println(threadIDSet.size());
+                System.out.println(e.getCause());
+            }
 
         } else {
             for (int i = 0; i < n; i++) train(i, inst);
@@ -137,11 +146,17 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
     }
 
     //send the overall CPU time of the parallel model to the Evaluator to update the stats in the GUI
-    public double getCpuTime(){
-        return _cpuTime;
+    public HashSet<Integer> getCpuTime(){
+        return threadIDSet;
     }
 
+
     public void train(int index, Instance instance) {
+        // make hashSet of thread IDs
+        threadIDSet.add((int) Thread.currentThread().getId());
+       // System.out.println("ID: " + Thread.currentThread().getId());
+        //System.out.println("Time: " + TimingUtils.nanoTimeToSeconds(TimingUtils.getNanoCPUTimeOfCurrentThread()));
+       // System.out.println("Thread ID Time: " + TimingUtils.nanoTimeToSeconds(TimingUtils.getNanoCPUTimeOfThread(Thread.currentThread().getId())));
 
         int k = _weight[index];
         if (k > 0) {
@@ -149,13 +164,27 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
             weightedInst.setWeight(instance.weight() * k);
             _classifiers[index].trainOnInstance(weightedInst);
         }
-        double t2 = System.currentTimeMillis();
-        _cpuTime += (t2 - _t1);
+//        double t2 = System.currentTimeMillis();
+//        _cpuTime += (t2 - _t1);
+    }
+
+    public void init() throws InterruptedException, ExecutionException {
+//        _threadpool.submit(() -> IntStream.range(0, _coreAmountOption.getValue() + 2).parallel().forEach(i -> {
+//            try {
+//                System.out.println("Init IDS: " + Thread.currentThread().getId());
+//
+//                Thread.sleep(10000);
+//
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        })).get();;
+//        Thread.sleep(2000);
     }
 
 
     public double[] getVotesForInstance(Instance instance) {
-        _t1 = System.currentTimeMillis();
+//        _t1 = System.currentTimeMillis();
 
         if (_parallelOption.isSet()) {
             double sum = 0.0;
@@ -177,8 +206,8 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
                 }
 
             }
-            double t2 = System.currentTimeMillis();
-            _cpuTime += (t2 - _t1);
+//            double t2 = System.currentTimeMillis();
+//            _cpuTime += (t2 - _t1);
             return votes;
 
         } else {
@@ -221,6 +250,12 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
     public void ReceivePool(ForkJoinPool pool){
         System.out.println("Start time");
         _threadpool = pool;
+    }
+
+    @Override
+    public void ReceiveHashSet() {
+        threadIDSet = new HashSet<Integer>();
+
     }
 
 

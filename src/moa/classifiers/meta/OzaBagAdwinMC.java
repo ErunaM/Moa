@@ -36,6 +36,7 @@ import moa.core.MiscUtils;
 import moa.options.ClassOption;
 import com.github.javacliparser.IntOption;
 
+import java.util.HashSet;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.stream.IntStream;
@@ -256,12 +257,22 @@ public class OzaBagAdwinMC extends AbstractClassifier implements MultiClassClass
     }
 
     @Override
+    public void ReceiveHashSet() {
+
+    }
+
+    @Override
     public int getCores() {
         return _coreAmountOption.getValue();
     }
 
     @Override
-    public double getCpuTime() {
-        return 0;
+    public HashSet<Integer> getCpuTime() {
+        return null;
+    }
+
+    @Override
+    public void init() throws InterruptedException, ExecutionException {
+
     }
 }

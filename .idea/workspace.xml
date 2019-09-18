@@ -3,12 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="ed62ce1e-7bf1-483f-96ab-e87915a8012d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/OzaBagB$Predictor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/OzaBagB.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/OzaBagCores$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BaggingCores/moa/classifiers/meta/OzaBagCores.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/CustomThreadPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/CustomThreadPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/Multithreading.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/Multithreading.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagMC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagBMod1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagBMod2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagCores.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagMC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +43,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Moa-full-moa-project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
