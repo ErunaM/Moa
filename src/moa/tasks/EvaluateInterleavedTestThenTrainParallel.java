@@ -24,10 +24,7 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.HashSet;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.TimeUnit;
 
-import moa.CustomThreadPool;
 import moa.capabilities.Capability;
 import moa.capabilities.ImmutableCapabilities;
 import moa.classifiers.Multithreading;
@@ -52,7 +49,7 @@ import moa.streams.InstanceStream;
  * @author Richard Kirkby (rkirkby@cs.waikato.ac.nz)
  * @version $Revision: 7 $
  */
-public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
+public class EvaluateInterleavedTestThenTrainParallel extends ClassificationMainTask {
 
     @Override
     public String getPurposeString() {
@@ -263,7 +260,7 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
 
     @Override
     public ImmutableCapabilities defineImmutableCapabilities() {
-        if (this.getClass() == EvaluateInterleavedTestThenTrain2.class)
+        if (this.getClass() == EvaluateInterleavedTestThenTrainParallel.class)
             return new ImmutableCapabilities(Capability.VIEW_STANDARD, Capability.VIEW_LITE);
         else
             return new ImmutableCapabilities(Capability.VIEW_STANDARD);

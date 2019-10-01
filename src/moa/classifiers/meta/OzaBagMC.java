@@ -96,14 +96,9 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
 
 
     public void resetLearningImpl() {
+
         _r = new Random( _randomSeedOption.getValue());
         int ensembleSize = _ensembleSizeOption.getValue();
-//        int cores = _coreAmountOption.getValue();
-//        if(cores == 0){
-//            _threadpool = new ForkJoinPool(_coreAmountOption.getMaxValue());
-//        }else
-//        _threadpool = new ForkJoinPool(cores); // how many worker threads to use e.g how many cores to use
-
         Classifier baseLearner = (Classifier) getPreparedClassOption(_baseLearnerOption);
         baseLearner.resetLearning();
         _classifiers = new Classifier[ensembleSize];

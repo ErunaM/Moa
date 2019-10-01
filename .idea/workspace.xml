@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed62ce1e-7bf1-483f-96ab-e87915a8012d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/AdaptiveRandomForestMC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/AbstractClassifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/AbstractClassifier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/Multithreading.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/Multithreading.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagMC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrainParallel.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,6 +40,11 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="moa.classifiers.meta" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -207,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568851113438</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="CPU Time Tracking Final Version Working Implementation&#10;TODO: Fix Variable Names for push to MOA">
+      <created>1569890038770</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1569890038770</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -241,7 +250,8 @@
     <MESSAGE value="Possible Working Version of CPU time tracking (Currently only working for OzaBagB)" />
     <MESSAGE value="Finished Working Version of CPU Time.&#10;&#10;TODO: Have to work on implementing time tracking for Leverage Bag and tidy up the code/remove comments" />
     <MESSAGE value="Updated Other Bagging Algorithms to work with CPU timing, deleted some comments, also bug with CPU timing to be fixed on" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Other Bagging Algorithms to work with CPU timing, deleted some comments, also bug with CPU timing to be fixed on" />
+    <MESSAGE value="CPU Time Tracking Final Version Working Implementation&#10;TODO: Fix Variable Names for push to MOA" />
+    <option name="LAST_COMMIT_MESSAGE" value="CPU Time Tracking Final Version Working Implementation&#10;TODO: Fix Variable Names for push to MOA" />
   </component>
   <component name="masterDetails">
     <states>
