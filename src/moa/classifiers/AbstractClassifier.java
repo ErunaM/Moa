@@ -187,6 +187,23 @@ public abstract class AbstractClassifier extends AbstractOptionHandler
             }
         }
     }
+    protected double _cpuTime;
+    protected double _t1;
+
+    // Doesnt end up working
+    public void parallelTrain(){
+        double t1 = System.currentTimeMillis();
+        _t1 = t1;
+        train();
+        double t2 = System.currentTimeMillis();
+        _cpuTime += (t2 - _t1);
+
+
+    }
+
+     private void train(){
+
+    }
 
     @Override
     public Measurement[] getModelMeasurements() {

@@ -92,13 +92,8 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
     protected Random _r;
     protected int[] _weight;
     protected ForkJoinPool _threadpool;
-    protected double _cpuTime;
-    protected double _t1;
-    protected HashSet<Integer> threadIDSet;
 
-    public int getCores(){
-        return _coreAmountOption.getValue();
-    }
+
 
     public void resetLearningImpl() {
         _r = new Random( _randomSeedOption.getValue());
@@ -124,36 +119,30 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
         double t1 = System.currentTimeMillis();
         _t1 = t1;
 
-
-
         int n = _classifiers.length;
         for (int i = 0; i < n; i++) _weight[i] = MiscUtils.poisson(1.0, _r);
 
         if (_parallelOption.isSet()) {
 
-            try{
-            _threadpool.submit(() -> IntStream.range(0, n).parallel().forEach(i -> train(i, inst))).get();}
-            catch (ExecutionException e){
-                System.out.println(_threadpool);
-                 System.out.println(_classifiers.length);
-                System.out.println(threadIDSet.size());
-                System.out.println(e.getCause());
-            }
+            IntStream.range(0, n).parallel().forEach(i -> train(i, inst));
 
         } else {
             for (int i = 0; i < n; i++) train(i, inst);
+            double t2 = System.currentTimeMillis();
+            _cpuTime += (t2 - _t1);
+
         }
     }
 
     //send the overall CPU time of the parallel model to the Evaluator to update the stats in the GUI
-    public HashSet<Integer> getCpuTime(){
-        return threadIDSet;
+    public double getCpuTime(){
+        return _cpuTime;
     }
 
 
     public void train(int index, Instance instance) {
 
-        threadIDSet.add((int) Thread.currentThread().getId());
+
 
         int k = _weight[index];
         if (k > 0) {
@@ -161,8 +150,8 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
             weightedInst.setWeight(instance.weight() * k);
             _classifiers[index].trainOnInstance(weightedInst);
         }
-//        double t2 = System.currentTimeMillis();
-//        _cpuTime += (t2 - _t1);
+        double t2 = System.currentTimeMillis();
+        _cpuTime += (t2 - _t1);
     }
 
     //Initial Method Of algorithm incase developers want to use it.
@@ -172,7 +161,8 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
 
 
     public double[] getVotesForInstance(Instance instance) {
-
+        double t1 = System.currentTimeMillis();
+        _t1 = t1;
         if (_parallelOption.isSet()) {
             double sum = 0.0;
             _instance = instance;
@@ -232,16 +222,7 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
         return Arrays.copyOf(_classifiers, _classifiers.length);
     }
 
-    public void ReceivePool(ForkJoinPool pool){
-        System.out.println("Start time");
-        _threadpool = pool;
-    }
 
-    @Override
-    public void ReceiveHashSet() {
-        threadIDSet = new HashSet<Integer>();
-
-    }
 
 
     //======================================================================

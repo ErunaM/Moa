@@ -3,9 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ed62ce1e-7bf1-483f-96ab-e87915a8012d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/AbstractClassifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/AbstractClassifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/Multithreading.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/Multithreading.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagMC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain2.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -197,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568844237250</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Updated Other Bagging Algorithms to work with CPU timing, deleted some comments, also bug with CPU timing to be fixed on">
+      <created>1568851113438</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1568851113438</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -230,7 +240,8 @@
     <MESSAGE value="EvaluatedInterleavedTestThenTrain2 updated to implement a proper version of CPU timing where we track each thread that is used and get the time of each.&#10;&#10;Currently bugged where the time increases fine for 3 printouts then just prints the same number untill the algorithm finishes" />
     <MESSAGE value="Possible Working Version of CPU time tracking (Currently only working for OzaBagB)" />
     <MESSAGE value="Finished Working Version of CPU Time.&#10;&#10;TODO: Have to work on implementing time tracking for Leverage Bag and tidy up the code/remove comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished Working Version of CPU Time.&#10;&#10;TODO: Have to work on implementing time tracking for Leverage Bag and tidy up the code/remove comments" />
+    <MESSAGE value="Updated Other Bagging Algorithms to work with CPU timing, deleted some comments, also bug with CPU timing to be fixed on" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Other Bagging Algorithms to work with CPU timing, deleted some comments, also bug with CPU timing to be fixed on" />
   </component>
   <component name="masterDetails">
     <states>

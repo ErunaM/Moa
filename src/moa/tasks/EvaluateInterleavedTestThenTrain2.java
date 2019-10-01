@@ -118,30 +118,20 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
             learner.resetLearning();
         }
 
-        CustomThreadPool cp = new CustomThreadPool(1);
-        ForkJoinPool customPool;
+
         boolean isInitialised = false;
         if(learner instanceof Multithreading){
-            isInitialised = true;
-            cp = new CustomThreadPool(((Multithreading) learner).getCores());
-            customPool = new ForkJoinPool(((Multithreading) learner).getCores());
             try {
-                cp.getThreadIDs();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
+                ((Multithreading) learner).init();
             } catch (InterruptedException e) {
                 e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
             }
-
-            ((Multithreading) learner).ReceivePool(customPool);
-
-                ((Multithreading) learner).ReceiveHashSet();
-
+            isInitialised = true;
 
         }
 
-        // Comment out before publishing
-        System.out.println("Runtime Processors: " + Runtime.getRuntime().availableProcessors());
         ExampleStream stream = (InstanceStream) getPreparedClassOption(this.streamOption);
 
         LearningPerformanceEvaluator evaluator = (LearningPerformanceEvaluator) getPreparedClassOption(this.evaluatorOption);
@@ -171,8 +161,8 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
         }
         double time = 0;
         boolean firstDump = true;
-        boolean preciseCPUTiming =  false;//TimingUtils.enablePreciseTiming();
         float timeTaken = 0;
+        // Clock Time Start
         long t1 = System.currentTimeMillis();
         long evaluateStartTime = TimingUtils.getNanoCPUTimeOfCurrentThread();
         long lastEvaluateStartTime = evaluateStartTime;
@@ -195,6 +185,7 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
                 long evaluateTime = TimingUtils.getNanoCPUTimeOfCurrentThread();
 
                 long t2 = System.currentTimeMillis();
+                //Clock Time End
                 timeTaken = (t2-t1)/1000F;
                 double timeIncrement = TimingUtils.nanoTimeToSeconds(evaluateTime - lastEvaluateStartTime);
                 double RAMHoursIncrement = learner.measureByteSize() / (1024.0 * 1024.0 * 1024.0); //GBs
@@ -203,25 +194,8 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
                 lastEvaluateStartTime = evaluateTime;
 
                 if(isInitialised){
-                    long cpuTime =0;
-                    try {
-                        cp.getThreadIDs();
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
                     Multithreading tempLearner = ((Multithreading) learner);
-                    Integer[] ids =  tempLearner.getCpuTime().toArray(new Integer[tempLearner.getCpuTime().size()]);
-                    for(int i = 0; i < ids.length; i++){
-                        //System.out.println(ids[i]);
-                        //System.out.println(TimingUtils.getNanoCPUTimeOfThread(ids[i]));
-                        cpuTime += TimingUtils.getNanoCPUTimeOfThread(ids[i]);
-
-                    }
-                    System.out.println(cpuTime);
-                    time = TimingUtils.nanoTimeToSeconds(cpuTime);
+                    time = tempLearner.getCpuTime()/1000;
 
 
                 }
@@ -232,10 +206,7 @@ public class EvaluateInterleavedTestThenTrain2 extends ClassificationMainTask {
                                         "learning evaluation instances",
                                         instancesProcessed),
                                 new Measurement(
-                                        "CPU TIME ("
-                                                + (preciseCPUTiming ? "" +
-                                                ""
-                                                : "") + "seconds)",
+                                        "CPU TIME (" + " seconds)",
                                         time),
                                 new Measurement(
                                         "model cost (RAM-Hours)",

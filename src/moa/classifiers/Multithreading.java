@@ -6,15 +6,9 @@ import java.util.concurrent.ForkJoinPool;
 
 public interface Multithreading {
 
-     void ReceivePool(ForkJoinPool pool);
-
-     void ReceiveHashSet();
-
      void trainingHasEnded();
 
-     int getCores();
-
-     HashSet<Integer> getCpuTime();
+     double getCpuTime();
 
      void init() throws InterruptedException, ExecutionException;
 

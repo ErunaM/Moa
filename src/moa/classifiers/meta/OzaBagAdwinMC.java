@@ -124,6 +124,8 @@ public class OzaBagAdwinMC extends AbstractClassifier implements MultiClassClass
     protected ForkJoinPool _threadpool;
 
     protected HashSet<Integer> threadIDSet;
+    protected double _cpuTime;
+    protected double _t1;
 
     @Override
     public void resetLearningImpl() {
@@ -143,6 +145,9 @@ public class OzaBagAdwinMC extends AbstractClassifier implements MultiClassClass
     @Override
     public void trainOnInstanceImpl(Instance inst) throws ExecutionException, InterruptedException {
         boolean Change = false;
+        double t1 = System.currentTimeMillis();
+        _t1 = t1;
+
         _Change = false;
         if (_parallelOption.isSet()) {
             for (int i = 0; i < this.ensemble.length; i++) {
@@ -169,6 +174,8 @@ public class OzaBagAdwinMC extends AbstractClassifier implements MultiClassClass
                     }
                 }
             }
+            double t2 = System.currentTimeMillis();
+            _cpuTime += (t2 - _t1);
 
         }
 
@@ -187,12 +194,13 @@ public class OzaBagAdwinMC extends AbstractClassifier implements MultiClassClass
                 this.ADError[imax] = new ADWIN();
             }
         }
+
     }
 
 
     public void train(int i, Instance inst) {
         double k = _randomPoissonArray[i];
-        threadIDSet.add((int) Thread.currentThread().getId());
+//        threadIDSet.add((int) Thread.currentThread().getId());
 
         if (k > 0) {
             Instance weightedInst = (Instance) inst.copy();
@@ -206,12 +214,17 @@ public class OzaBagAdwinMC extends AbstractClassifier implements MultiClassClass
                 _Change = true;
             }
         }
+        double t2 = System.currentTimeMillis();
+        _cpuTime += (t2 - _t1);
 
     }
 
 
     @Override
     public double[] getVotesForInstance(Instance inst) {
+        double t1 = System.currentTimeMillis();
+        _t1 = t1;
+
         DoubleVector combinedVote = new DoubleVector();
         for (int i = 0; i < this.ensemble.length; i++) {
             DoubleVector vote = new DoubleVector(this.ensemble[i].getVotesForInstance(inst));
@@ -220,6 +233,8 @@ public class OzaBagAdwinMC extends AbstractClassifier implements MultiClassClass
                 combinedVote.addValues(vote);
             }
         }
+        double t2 = System.currentTimeMillis();
+        _cpuTime += (t2 - _t1);
         return combinedVote.getArrayRef();
     }
 
@@ -252,28 +267,10 @@ public class OzaBagAdwinMC extends AbstractClassifier implements MultiClassClass
             return new ImmutableCapabilities(Capability.VIEW_STANDARD);
     }
 
-    @Override
-    public void ReceivePool(ForkJoinPool pool) {
-        System.out.println("Start time");
-        _threadpool = pool;
-
-    }
 
     @Override
-    public void ReceiveHashSet() {
-
-        threadIDSet = new HashSet<Integer>();
-
-    }
-
-    @Override
-    public int getCores() {
-        return _coreAmountOption.getValue();
-    }
-
-    @Override
-    public HashSet<Integer> getCpuTime() {
-        return threadIDSet;
+    public double getCpuTime() {
+        return _cpuTime;
     }
 
     @Override

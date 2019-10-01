@@ -115,6 +115,9 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
 
     protected HashSet<Integer> threadIDSet;
 
+    protected double _cpuTime;
+    protected double _t1;
+
     @Override
     public void resetLearningImpl() {
         this.ensemble = new Classifier[this.ensembleSizeOption.getValue()];
@@ -137,6 +140,9 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
     @Override
     public void trainOnInstanceImpl(Instance inst) throws ExecutionException, InterruptedException {
         int numClasses = inst.numClasses();
+        double t1 = System.currentTimeMillis();
+        _t1 = t1;
+
         //Output Codes
         if (this.initMatrixCodes) {
             this.matrixCodes = new int[this.ensemble.length][inst.numClasses()];
@@ -244,6 +250,8 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
                     }
                 }
             }
+            double t2 = System.currentTimeMillis();
+            _cpuTime += (t2 - _t1);
         }
        // System.out.println("cycle");
         if (Change || _Change) {
@@ -287,11 +295,16 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
                 _Change = true;
             }
         }
+        double t2 = System.currentTimeMillis();
+        _cpuTime += (t2 - _t1);
 
     }
 
     @Override
     public double[] getVotesForInstance(Instance inst) {
+        double t1 = System.currentTimeMillis();
+        _t1 = t1;
+
         if (this.outputCodesOption.isSet()) {
             return getVotesForInstanceBinary(inst);
         }
@@ -364,27 +377,8 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
     }
 
     @Override
-    public void ReceivePool(ForkJoinPool pool) {
-
-        System.out.println("Start time");
-        _threadpool = pool;
-    }
-
-    @Override
-    public void ReceiveHashSet() {
-
-        threadIDSet = new HashSet<Integer>();
-
-    }
-
-    @Override
-    public int getCores() {
-        return _coreAmountOption.getValue();
-    }
-
-    @Override
-    public HashSet<Integer> getCpuTime() {
-        return threadIDSet;
+    public double getCpuTime() {
+        return _cpuTime;
     }
 
     @Override
