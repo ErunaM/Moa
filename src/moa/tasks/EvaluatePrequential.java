@@ -1,7 +1,8 @@
 /*
- *    EvaluateInterleavedTestThenTrain2.java
+ *    EvaluatePrequential.java
  *    Copyright (C) 2007 University of Waikato, Hamilton, New Zealand
  *    @author Richard Kirkby (rkirkby@cs.waikato.ac.nz)
+ *    @author Albert Bifet (abifet at cs dot waikato dot ac dot nz)
  *
  *    This program is free software; you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,41 +16,39 @@
  *
  *    You should have received a copy of the GNU General Public License
  *    along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
+ *    
  */
 package moa.tasks;
+
+import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FloatOption;
+import com.github.javacliparser.IntOption;
+import com.yahoo.labs.samoa.instances.Instance;
+import moa.capabilities.CapabilitiesHandler;
+import moa.capabilities.Capability;
+import moa.capabilities.ImmutableCapabilities;
+import moa.classifiers.MultiClassClassifier;
+import moa.classifiers.Multithreading;
+import moa.core.*;
+import moa.evaluation.*;
+import moa.evaluation.preview.LearningCurve;
+import moa.learners.Learner;
+import moa.options.ClassOption;
+import moa.streams.ExampleStream;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
-import java.util.HashSet;
 import java.util.concurrent.ExecutionException;
-
-import moa.capabilities.Capability;
-import moa.capabilities.ImmutableCapabilities;
-import moa.classifiers.Multithreading;
-import moa.classifiers.MultiClassClassifier;
-import moa.core.Example;
-import moa.core.Measurement;
-import moa.core.ObjectRepository;
-import moa.core.TimingUtils;
-import moa.evaluation.LearningEvaluation;
-import moa.evaluation.LearningPerformanceEvaluator;
-import moa.evaluation.preview.LearningCurve;
-import moa.learners.Learner;
-import moa.options.ClassOption;
-import com.github.javacliparser.FileOption;
-import com.github.javacliparser.IntOption;
-import moa.streams.ExampleStream;
-import moa.streams.InstanceStream;
 
 /**
  * Task for evaluating a classifier on a stream by testing then training with each example in sequence.
  *
  * @author Richard Kirkby (rkirkby@cs.waikato.ac.nz)
+ * @author Albert Bifet (abifet at cs dot waikato dot ac dot nz)
  * @version $Revision: 7 $
  */
-public class EvaluateInterleavedTestThenTrainParallel extends ClassificationMainTask {
+public class EvaluatePrequential extends ClassificationMainTask implements CapabilitiesHandler {
 
     @Override
     public String getPurposeString() {
@@ -65,14 +64,10 @@ public class EvaluateInterleavedTestThenTrainParallel extends ClassificationMain
             "Stream to learn from.", ExampleStream.class,
             "generators.RandomTreeGenerator");
 
-    public IntOption randomSeedOption = new IntOption(
-            "instanceRandomSeed", 'r',
-            "Seed for random generation of instances.", 1);
-
     public ClassOption evaluatorOption = new ClassOption("evaluator", 'e',
             "Classification performance evaluation method.",
             LearningPerformanceEvaluator.class,
-            "BasicClassificationPerformanceEvaluator");
+            "WindowClassificationPerformanceEvaluator");
 
     public IntOption instanceLimitOption = new IntOption("instanceLimit", 'i',
             "Maximum number of instances to test/train on  (-1 = no limit).",
@@ -93,7 +88,18 @@ public class EvaluateInterleavedTestThenTrainParallel extends ClassificationMain
             Integer.MAX_VALUE);
 
     public FileOption dumpFileOption = new FileOption("dumpFile", 'd',
-            "File to append intermediate csv reslts to.", null, "csv", true);
+            "File to append intermediate csv results to.", null, "csv", true);
+
+    public FileOption outputPredictionFileOption = new FileOption("outputPredictionFile", 'o',
+            "File to append output predictions to.", null, "pred", true);
+
+    //New for prequential method DEPRECATED
+    public IntOption widthOption = new IntOption("width",
+            'w', "Size of Window", 1000);
+
+    public FloatOption alphaOption = new FloatOption("alpha",
+            'a', "Fading factor or exponential smoothing factor", .01);
+    //End New for prequential methods
 
     @Override
     public Class<?> getTaskResultType() {
@@ -102,20 +108,9 @@ public class EvaluateInterleavedTestThenTrainParallel extends ClassificationMain
 
     @Override
     protected Object doMainTask(TaskMonitor monitor, ObjectRepository repository) {
-        //System.out.println("Main Thread: "+ Thread.currentThread().getId() );
-        HashSet<Integer> threadIDSet = new HashSet<Integer>();
-        String learnerString = this.learnerOption.getValueAsCLIString();
-        String streamString = this.streamOption.getValueAsCLIString();
-        //this.learnerOption.setValueViaCLIString(this.learnerOption.getValueAsCLIString() + " -r " +this.randomSeedOption);
-        // this.streamOption.setValueViaCLIString(streamString + " -i " + this.randomSeedOption.getValueAsCLIString());
-
         Learner learner = (Learner) getPreparedClassOption(this.learnerOption);
-        if (learner.isRandomizable()) {
-            learner.setRandomSeed(this.randomSeedOption.getValue());
-            learner.resetLearning();
-        }
-
-
+        ExampleStream stream = (ExampleStream) getPreparedClassOption(this.streamOption);
+        LearningPerformanceEvaluator evaluator = (LearningPerformanceEvaluator) getPreparedClassOption(this.evaluatorOption);
         boolean isInitialised = false;
         if(learner instanceof Multithreading){
             try {
@@ -128,18 +123,40 @@ public class EvaluateInterleavedTestThenTrainParallel extends ClassificationMain
             isInitialised = true;
 
         }
+        LearningCurve learningCurve = new LearningCurve(
+                "learning evaluation instances");
 
-        ExampleStream stream = (InstanceStream) getPreparedClassOption(this.streamOption);
+        //New for prequential methods
+        if (evaluator instanceof WindowClassificationPerformanceEvaluator) {
+            //((WindowClassificationPerformanceEvaluator) evaluator).setWindowWidth(widthOption.getValue());
+            if (widthOption.getValue() != 1000) {
+                System.out.println("DEPRECATED! Use EvaluatePrequential -e (WindowClassificationPerformanceEvaluator -w " + widthOption.getValue() + ")");
+                 return learningCurve;
+            }
+        }
+        if (evaluator instanceof EWMAClassificationPerformanceEvaluator) {
+            //((EWMAClassificationPerformanceEvaluator) evaluator).setalpha(alphaOption.getValue());
+            if (alphaOption.getValue() != .01) {
+                System.out.println("DEPRECATED! Use EvaluatePrequential -e (EWMAClassificationPerformanceEvaluator -a " + alphaOption.getValue() + ")");
+                return learningCurve;
+            }
+        }
+        if (evaluator instanceof FadingFactorClassificationPerformanceEvaluator) {
+            //((FadingFactorClassificationPerformanceEvaluator) evaluator).setalpha(alphaOption.getValue());
+            if (alphaOption.getValue() != .01) {
+                System.out.println("DEPRECATED! Use EvaluatePrequential -e (FadingFactorClassificationPerformanceEvaluator -a " + alphaOption.getValue() + ")");
+                return learningCurve;
+            }
+        }
+        //End New for prequential methods
 
-        LearningPerformanceEvaluator evaluator = (LearningPerformanceEvaluator) getPreparedClassOption(this.evaluatorOption);
         learner.setModelContext(stream.getHeader());
         int maxInstances = this.instanceLimitOption.getValue();
         long instancesProcessed = 0;
         int maxSeconds = this.timeLimitOption.getValue();
         int secondsElapsed = 0;
         monitor.setCurrentActivity("Evaluating learner...", -1.0);
-        LearningCurve learningCurve = new LearningCurve(
-                "learning evaluation instances");
+
         File dumpFile = this.dumpFileOption.getFile();
         PrintStream immediateResultStream = null;
         if (dumpFile != null) {
@@ -156,34 +173,56 @@ public class EvaluateInterleavedTestThenTrainParallel extends ClassificationMain
                         "Unable to open immediate result file: " + dumpFile, ex);
             }
         }
-        double time = 0;
+        //File for output predictions
+        File outputPredictionFile = this.outputPredictionFileOption.getFile();
+        PrintStream outputPredictionResultStream = null;
+        if (outputPredictionFile != null) {
+            try {
+                if (outputPredictionFile.exists()) {
+                    outputPredictionResultStream = new PrintStream(
+                            new FileOutputStream(outputPredictionFile, true), true);
+                } else {
+                    outputPredictionResultStream = new PrintStream(
+                            new FileOutputStream(outputPredictionFile), true);
+                }
+            } catch (Exception ex) {
+                throw new RuntimeException(
+                        "Unable to open prediction result file: " + outputPredictionFile, ex);
+            }
+        }
         boolean firstDump = true;
-        float timeTaken = 0;
-        // Clock Time Start
-        long t1 = System.currentTimeMillis();
+        boolean preciseCPUTiming = TimingUtils.enablePreciseTiming();
         long evaluateStartTime = TimingUtils.getNanoCPUTimeOfCurrentThread();
         long lastEvaluateStartTime = evaluateStartTime;
         double RAMHours = 0.0;
+
+        long t1 = System.currentTimeMillis();
+        float timeTaken = 0;
         while (stream.hasMoreInstances()
                 && ((maxInstances < 0) || (instancesProcessed < maxInstances))
                 && ((maxSeconds < 0) || (secondsElapsed < maxSeconds))) {
             Example trainInst = stream.nextInstance();
-            Example testInst = trainInst; //.copy();
-            //int trueClass = (int) trainInst.classValue();
+            Example testInst = (Example) trainInst; //.copy();
             //testInst.setClassMissing();
             double[] prediction = learner.getVotesForInstance(testInst);
-            //evaluator.addClassificationAttempt(trueClass, prediction, testInst
-            //		.weight());
+            // Output prediction
+            if (outputPredictionFile != null) {
+                int trueClass = (int) ((Instance) trainInst.getData()).classValue();
+                outputPredictionResultStream.println(Utils.maxIndex(prediction) + "," + (
+                 ((Instance) testInst.getData()).classIsMissing() == true ? " ? " : trueClass));
+            }
+
+            //evaluator.addClassificationAttempt(trueClass, prediction, testInst.weight());
             evaluator.addResult(testInst, prediction);
             learner.trainOnInstance(trainInst);
             instancesProcessed++;
             if (instancesProcessed % this.sampleFrequencyOption.getValue() == 0
-                    ||  stream.hasMoreInstances() == false) {
-                long evaluateTime = TimingUtils.getNanoCPUTimeOfCurrentThread();
-
+                    || stream.hasMoreInstances() == false) {
                 long t2 = System.currentTimeMillis();
                 //Clock Time End
                 timeTaken = (t2-t1)/1000F;
+                long evaluateTime = TimingUtils.getNanoCPUTimeOfCurrentThread();
+                double time = TimingUtils.nanoTimeToSeconds(evaluateTime - evaluateStartTime);
                 double timeIncrement = TimingUtils.nanoTimeToSeconds(evaluateTime - lastEvaluateStartTime);
                 double RAMHoursIncrement = learner.measureByteSize() / (1024.0 * 1024.0 * 1024.0); //GBs
                 RAMHoursIncrement *= (timeIncrement / 3600.0); //Hours
@@ -195,32 +234,32 @@ public class EvaluateInterleavedTestThenTrainParallel extends ClassificationMain
                     time = tempLearner.getCpuTime()/1000;
 
 
+                }else{
+                    time = evaluateTime;
                 }
 
                 learningCurve.insertEntry(new LearningEvaluation(
                         new Measurement[]{
-                                new Measurement(
-                                        "learning evaluation instances",
-                                        instancesProcessed),
-                                new Measurement(
-                                        "CPU TIME (" + " seconds)",
-                                        time),
-                                new Measurement(
-                                        "model cost (RAM-Hours)",
-                                        RAMHours),
-                                new Measurement(
-                                        "Wall Time (Actual Time)"
-                                        , timeTaken
-                                )
+                            new Measurement(
+                            "learning evaluation instances",
+                            instancesProcessed),
+                            new Measurement(
+                            "evaluation time ("
+                            + (preciseCPUTiming ? "cpu "
+                            : "") + "seconds)",
+                            time),
+                            new Measurement(
+                            "model cost (RAM-Hours)",
+                            RAMHours),
+                                new Measurement("Wall Clock Time", timeTaken)
                         },
                         evaluator, learner));
+
                 if (immediateResultStream != null) {
                     if (firstDump) {
-                        immediateResultStream.print("Learner,stream,randomSeed,");
                         immediateResultStream.println(learningCurve.headerToString());
                         firstDump = false;
                     }
-                    immediateResultStream.print(learnerString + "," + streamString + "," + this.randomSeedOption.getValueAsCLIString() + ",");
                     immediateResultStream.println(learningCurve.entryToString(learningCurve.numEntries() - 1));
                     immediateResultStream.flush();
                 }
@@ -247,20 +286,18 @@ public class EvaluateInterleavedTestThenTrainParallel extends ClassificationMain
                         - evaluateStartTime);
             }
         }
-
         if (immediateResultStream != null) {
             immediateResultStream.close();
         }
-        if(isInitialised){
-            ((Multithreading)learner).trainingHasEnded();
-            //customPool.shutdown();
+        if (outputPredictionResultStream != null) {
+            outputPredictionResultStream.close();
         }
         return learningCurve;
     }
 
     @Override
     public ImmutableCapabilities defineImmutableCapabilities() {
-        if (this.getClass() == EvaluateInterleavedTestThenTrainParallel.class)
+        if (this.getClass() == EvaluatePrequential.class)
             return new ImmutableCapabilities(Capability.VIEW_STANDARD, Capability.VIEW_LITE);
         else
             return new ImmutableCapabilities(Capability.VIEW_STANDARD);
