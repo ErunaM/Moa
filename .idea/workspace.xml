@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed62ce1e-7bf1-483f-96ab-e87915a8012d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/moa/tasks/EvaluatePrequential.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrainParallel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrainParallel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/AbstractClassifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/AbstractClassifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/AdaptiveRandomForestMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/AdaptiveRandomForestMC.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -223,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569890471839</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Updated and added Evaluation tasks to work with parallel">
+      <created>1570666225163</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1570666225163</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -258,7 +265,8 @@
     <MESSAGE value="Finished Working Version of CPU Time.&#10;&#10;TODO: Have to work on implementing time tracking for Leverage Bag and tidy up the code/remove comments" />
     <MESSAGE value="Updated Other Bagging Algorithms to work with CPU timing, deleted some comments, also bug with CPU timing to be fixed on" />
     <MESSAGE value="CPU Time Tracking Final Version Working Implementation&#10;TODO: Fix Variable Names for push to MOA" />
-    <option name="LAST_COMMIT_MESSAGE" value="CPU Time Tracking Final Version Working Implementation&#10;TODO: Fix Variable Names for push to MOA" />
+    <MESSAGE value="Updated and added Evaluation tasks to work with parallel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated and added Evaluation tasks to work with parallel" />
   </component>
   <component name="masterDetails">
     <states>
