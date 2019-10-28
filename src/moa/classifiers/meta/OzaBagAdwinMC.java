@@ -19,7 +19,6 @@
  */
 package moa.classifiers.meta;
 
-import com.github.javacliparser.FlagOption;
 import moa.capabilities.CapabilitiesHandler;
 import moa.capabilities.Capability;
 import moa.capabilities.ImmutableCapabilities;
@@ -38,7 +37,7 @@ import com.github.javacliparser.IntOption;
 
 import java.util.HashSet;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 /**
@@ -118,8 +117,7 @@ public class OzaBagAdwinMC extends AbstractClassifierParallel implements MultiCl
 
 
     protected HashSet<Integer> threadIDSet;
-    protected double _cpuTime;
-    protected double _t1;
+
 
     @Override
     public void resetLearningImpl() {
@@ -171,7 +169,7 @@ public class OzaBagAdwinMC extends AbstractClassifierParallel implements MultiCl
                 }
             }
             double t2 = System.currentTimeMillis();
-            _cpuTime += (t2 - _t1);
+            _cpuTime.addAndGet((int) (t2 - _t1));
 
         } else {
             int n = ensemble.length;
@@ -220,7 +218,7 @@ public class OzaBagAdwinMC extends AbstractClassifierParallel implements MultiCl
             }
         }
         double t2 = System.currentTimeMillis();
-        _cpuTime += (t2 - _t1);
+        _cpuTime.addAndGet((int) (t2 - _t1));
 
     }
 
@@ -239,7 +237,7 @@ public class OzaBagAdwinMC extends AbstractClassifierParallel implements MultiCl
             }
         }
         double t2 = System.currentTimeMillis();
-        _cpuTime += (t2 - _t1);
+        _cpuTime.addAndGet((int) (t2 - _t1));
         return combinedVote.getArrayRef();
     }
 
@@ -274,7 +272,7 @@ public class OzaBagAdwinMC extends AbstractClassifierParallel implements MultiCl
 
 
     @Override
-    public double getCpuTime() {
+    public AtomicInteger getCpuTime() {
         return _cpuTime;
     }
 

@@ -86,7 +86,7 @@ public class OzaBagMC extends AbstractClassifierParallel implements MultiClassCl
     protected Instance _instance;
     protected Random _r;
     protected int[] _weight;
-    protected ForkJoinPool _threadpool;
+
 
 
 
@@ -119,7 +119,7 @@ public class OzaBagMC extends AbstractClassifierParallel implements MultiClassCl
         } else if (_numOfCores == 1) {
             for (int i = 0; i < n; i++) train(i, inst);
             double t2 = System.currentTimeMillis();
-            _cpuTime += (t2 - _t1);
+            _cpuTime.addAndGet((int) (t2 - _t1));
 
         } else {
             _threadpool.submit(() -> IntStream.range(0, n).parallel().forEach(i -> train(i, inst)));
@@ -139,7 +139,7 @@ public class OzaBagMC extends AbstractClassifierParallel implements MultiClassCl
             _classifiers[index].trainOnInstance(weightedInst);
         }
         double t2 = System.currentTimeMillis();
-        _cpuTime += (t2 - _t1);
+        _cpuTime.addAndGet((int) (t2 - _t1));
     }
 
     //Initial Method Of algorithm incase developers want to use it.
@@ -182,7 +182,7 @@ public class OzaBagMC extends AbstractClassifierParallel implements MultiClassCl
             }
             combinedVote.normalize();
             double t2 = System.currentTimeMillis();
-            _cpuTime += (t2 - _t1);
+            _cpuTime.addAndGet((int) (t2 - _t1));
             return combinedVote.getArrayRef();
         }
 

@@ -25,6 +25,7 @@ import moa.options.ClassOption;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 
@@ -124,7 +125,7 @@ public class AdaptiveRandomForestMC extends AbstractClassifierParallel implement
     protected long instancesSeen;
     protected int subspaceSize;
     protected BasicClassificationPerformanceEvaluator evaluator;
-    protected ForkJoinPool _threadpool;
+
     protected int[] _k;
 
     private ExecutorService executor;
@@ -154,7 +155,7 @@ public class AdaptiveRandomForestMC extends AbstractClassifierParallel implement
 
         this.ensemble[i].trainOnInstance(instance, k, this.instancesSeen);
         double t2 = System.currentTimeMillis();
-        _cpuTime += (t2 - _t1);
+        _cpuTime.addAndGet((int) (t2 - _t1));
 
 
     }
@@ -214,7 +215,7 @@ public class AdaptiveRandomForestMC extends AbstractClassifierParallel implement
                 }
             }
             double t2 = System.currentTimeMillis();
-            _cpuTime += (t2 - _t1);
+            _cpuTime.addAndGet((int) (t2 - _t1));
             if (this.executor != null) {
                 try {
                     this.executor.invokeAll(trainers);
@@ -338,7 +339,7 @@ public class AdaptiveRandomForestMC extends AbstractClassifierParallel implement
 
 
     @Override
-    public double getCpuTime() {
+    public AtomicInteger getCpuTime() {
         return _cpuTime;
     }
 

@@ -41,6 +41,7 @@ import moa.core.MiscUtils;
 import java.util.HashSet;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 /**
@@ -109,12 +110,8 @@ public class LBagMC extends AbstractClassifierParallel implements MultiClassClas
 
     protected boolean _Change = false;
 
-    protected ForkJoinPool _threadpool;
-
     protected HashSet<Integer> threadIDSet;
 
-    protected double _cpuTime;
-    protected double _t1;
 
     @Override
     public void resetLearningImpl() {
@@ -260,7 +257,7 @@ public class LBagMC extends AbstractClassifierParallel implements MultiClassClas
                 }
             }
             double t2 = System.currentTimeMillis();
-            _cpuTime += (t2 - _t1);
+            _cpuTime.addAndGet((int) (t2 - _t1));
         } else{
 
 
@@ -307,7 +304,7 @@ public class LBagMC extends AbstractClassifierParallel implements MultiClassClas
             }
         }
         double t2 = System.currentTimeMillis();
-        _cpuTime += (t2 - _t1);
+        _cpuTime.addAndGet((int) (t2 - _t1));
 
     }
 
@@ -388,7 +385,7 @@ public class LBagMC extends AbstractClassifierParallel implements MultiClassClas
     }
 
     @Override
-    public double getCpuTime() {
+    public AtomicInteger getCpuTime() {
         return _cpuTime;
     }
 

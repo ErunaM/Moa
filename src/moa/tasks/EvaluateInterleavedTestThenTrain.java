@@ -192,7 +192,7 @@ public class EvaluateInterleavedTestThenTrain extends ClassificationMainTask {
 
                 if(isInitialised){
                     Multithreading tempLearner = ((Multithreading) learner);
-                    time = tempLearner.getCpuTime()/1000;
+                    time = (double)tempLearner.getCpuTime().get()/(double)1000;
 
 
                 }else{
@@ -256,6 +256,10 @@ public class EvaluateInterleavedTestThenTrain extends ClassificationMainTask {
         if(isInitialised){
             ((Multithreading)learner).trainingHasEnded();
             //customPool.shutdown();
+        }
+        if(learner instanceof Multithreading){
+
+                ((Multithreading) learner).trainingHasEnded();
         }
         return learningCurve;
     }

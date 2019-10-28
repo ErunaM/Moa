@@ -20,38 +20,15 @@
 
 package moa.classifiers;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Random;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.atomic.AtomicInteger;
 
-import moa.MOAObject;
 import moa.capabilities.CapabilitiesHandler;
-import moa.capabilities.Capability;
-import moa.capabilities.ImmutableCapabilities;
-import moa.core.Example;
-
-import com.yahoo.labs.samoa.instances.InstancesHeader;
-
-import moa.core.Measurement;
-import moa.core.ObjectRepository;
-import moa.core.StringUtils;
-import moa.gui.AWTRenderer;
-import moa.learners.Learner;
-import moa.options.AbstractOptionHandler;
 
 import com.github.javacliparser.IntOption;
 
-import moa.tasks.TaskMonitor;
-
 import com.yahoo.labs.samoa.instances.Instance;
-import com.yahoo.labs.samoa.instances.Instances;
-import com.yahoo.labs.samoa.instances.MultiLabelPrediction;
-import com.yahoo.labs.samoa.instances.Prediction;
-
-import moa.core.Utils;
 
 public abstract class AbstractClassifierParallel extends AbstractClassifier
         implements Classifier, CapabilitiesHandler { //Learner<Example<Instance>> {
@@ -64,7 +41,7 @@ public abstract class AbstractClassifierParallel extends AbstractClassifier
     /** The amount of CPU cores to be run in parallel */
     public int _numOfCores;
     /** _cpuTime stores the total time the program has been running on the cores */
-    protected double _cpuTime;
+    protected AtomicInteger _cpuTime;
     /** start time used in threads to measure the start of the training program in parallel */
     protected double _t1;
 
@@ -89,6 +66,7 @@ public abstract class AbstractClassifierParallel extends AbstractClassifier
 
     @Override
     public void resetLearning() {
+        _cpuTime = new AtomicInteger();
         _numOfCores = _amountOfCores.getValue();
         if(_numOfCores > 1){
             _threadpool = new ForkJoinPool(_numOfCores);
@@ -104,7 +82,7 @@ public abstract class AbstractClassifierParallel extends AbstractClassifier
 
 
 
-    public double getCpuTime() {
+    public AtomicInteger getCpuTime() {
         return _cpuTime;
     }
 

@@ -231,7 +231,7 @@ public class EvaluatePrequential extends ClassificationMainTask implements Capab
 
                 if(isInitialised){
                     Multithreading tempLearner = ((Multithreading) learner);
-                    time = tempLearner.getCpuTime()/1000;
+                    time = (double)tempLearner.getCpuTime().get()/1000;
 
 
                 }else{
@@ -291,6 +291,10 @@ public class EvaluatePrequential extends ClassificationMainTask implements Capab
         }
         if (outputPredictionResultStream != null) {
             outputPredictionResultStream.close();
+        }
+        if(learner instanceof Multithreading){
+
+            ((Multithreading) learner).trainingHasEnded();
         }
         return learningCurve;
     }

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ed62ce1e-7bf1-483f-96ab-e87915a8012d" name="Default Changelist" comment="">
+    <list default="true" id="ed62ce1e-7bf1-483f-96ab-e87915a8012d" name="Default Changelist" comment="AtomicInt now used for _cputime">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/CustomThreadPool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/AbstractClassifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/AbstractClassifierParallel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/AbstractClassifierParallel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/AbstractClassifierParallel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/Multithreading.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/Multithreading.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/AdaptiveRandomForestMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/AdaptiveRandomForestMC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagMC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/tasks/EvaluatePrequential.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/tasks/EvaluatePrequential.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -237,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571308548799</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Algorithms now include # of core option, Abstract Parallel class now includes more methods and has been refined.">
+      <created>1572231687779</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1572231687779</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -274,7 +283,9 @@
     <MESSAGE value="CPU Time Tracking Final Version Working Implementation&#10;TODO: Fix Variable Names for push to MOA" />
     <MESSAGE value="Updated and added Evaluation tasks to work with parallel" />
     <MESSAGE value="Final Version All working hopefully" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final Version All working hopefully" />
+    <MESSAGE value="Algorithms now include # of core option, Abstract Parallel class now includes more methods and has been refined." />
+    <MESSAGE value="AtomicInt now used for _cputime" />
+    <option name="LAST_COMMIT_MESSAGE" value="AtomicInt now used for _cputime" />
   </component>
   <component name="masterDetails">
     <states>
