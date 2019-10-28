@@ -25,7 +25,7 @@ import com.github.javacliparser.FlagOption;
 import moa.capabilities.CapabilitiesHandler;
 import moa.capabilities.Capability;
 import moa.capabilities.ImmutableCapabilities;
-import moa.classifiers.AbstractClassifier;
+import moa.classifiers.AbstractClassifierParallel;
 import moa.classifiers.MultiClassClassifier;
 import moa.classifiers.Multithreading;
 import moa.options.ClassOption;
@@ -54,7 +54,7 @@ import java.util.stream.IntStream;
  * @author Albert Bifet (abifet at cs dot waikato dot ac dot nz)
  * @version $Revision: 7 $
  */
-public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
+public class LBagMC extends AbstractClassifierParallel implements MultiClassClassifier,
         CapabilitiesHandler, Multithreading {
 
     private static final long serialVersionUID = 1L;
@@ -67,8 +67,6 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
     public ClassOption baseLearnerOption = new ClassOption("baseLearner", 'l',
             "Classifier to train.", Classifier.class, "trees.HoeffdingTree");
 
-    public IntOption _coreAmountOption = new IntOption("NumberOfCores", 'z',
-            "The amount of cores to use for parallelism, Note: The max accounts for physical and virtual Cores", 1, 0, Runtime.getRuntime().availableProcessors());
 
 
     public IntOption ensembleSizeOption = new IntOption("ensembleSize", 's',
@@ -138,7 +136,7 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
     }
 
     @Override
-    public void trainOnInstanceImpl(Instance inst) throws ExecutionException, InterruptedException {
+    public void trainOnInstanceImpl(Instance inst) {
         int numClasses = inst.numClasses();
         double t1 = System.currentTimeMillis();
         _t1 = t1;
@@ -179,7 +177,7 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
         Instance weightedInst = (Instance) inst.copy();
         double w = this.weightShrinkOption.getValue();
         int n = ensemble.length;
-        if (_parallelOption.isSet()) {
+        if (_numOfCores != 1) {
             for (int i = 0; i < this.ensemble.length; i++) {
                 double k = 0.0;
                 switch (this.leveraginBagAlgorithmOption.getChosenIndex()) {
@@ -207,9 +205,20 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
                 }
                 randomPoissonArray[i] = k;
             }
-            _threadpool.submit(() -> IntStream.range(0, n).parallel().forEach(i -> train(i, inst))).get();
+                if(_numOfCores == 0)
+                IntStream.range(0, n).parallel().forEach(i -> train(i, inst));
+                else {
+                    try {
+                        _threadpool.submit(() -> IntStream.range(0, n).parallel().forEach(i -> train(i, inst))).get();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
+                }
 
-        }else{
+
+        }else if (_numOfCores == 1){
             //Train ensemble of classifiers
             for (int i = 0; i < this.ensemble.length; i++) {
                 double k = 0.0;
@@ -252,8 +261,10 @@ public class LBagMC extends AbstractClassifier implements MultiClassClassifier,
             }
             double t2 = System.currentTimeMillis();
             _cpuTime += (t2 - _t1);
-        }
-       // System.out.println("cycle");
+        } else{
+
+
+        }       // System.out.println("cycle");
         if (Change || _Change) {
             //System.out.println("test");
             numberOfChangesDetected++;

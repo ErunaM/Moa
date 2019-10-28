@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ed62ce1e-7bf1-483f-96ab-e87915a8012d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/AbstractClassifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/AbstractClassifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/CustomThreadPool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/AbstractClassifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/AbstractClassifierParallel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/AdaptiveRandomForestMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/AdaptiveRandomForestMC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagMC.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,20 +29,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="165" />
-    <option name="y" value="27" />
-    <option name="width" value="1371" />
-    <option name="height" value="873" />
-  </component>
   <component name="ProjectId" id="1Ohtm3zopDmGEXsudrMA1DKXrsW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -230,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570666225163</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Final Version All working hopefully">
+      <created>1571308548799</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1571308548799</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -266,7 +273,8 @@
     <MESSAGE value="Updated Other Bagging Algorithms to work with CPU timing, deleted some comments, also bug with CPU timing to be fixed on" />
     <MESSAGE value="CPU Time Tracking Final Version Working Implementation&#10;TODO: Fix Variable Names for push to MOA" />
     <MESSAGE value="Updated and added Evaluation tasks to work with parallel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated and added Evaluation tasks to work with parallel" />
+    <MESSAGE value="Final Version All working hopefully" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final Version All working hopefully" />
   </component>
   <component name="masterDetails">
     <states>

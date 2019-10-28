@@ -21,7 +21,7 @@
 
 package moa.classifiers.meta;
 
-import moa.classifiers.AbstractClassifier;
+import moa.classifiers.AbstractClassifierParallel;
 import moa.classifiers.Classifier;
 import com.yahoo.labs.samoa.instances.Instance;
 
@@ -34,7 +34,6 @@ import moa.options.ClassOption;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.FlagOption;
 
-import java.util.HashSet;
 import java.util.Random;
 import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
@@ -64,7 +63,7 @@ import java.util.stream.IntStream;
  * @author Richard Kirkby (rkirkby@cs.waikato.ac.nz)
  * @version $Revision: 7 $
  */
-public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier, Multithreading {
+public class OzaBagMC extends AbstractClassifierParallel implements MultiClassClassifier, Multithreading {
 
     public String getPurposeString() {
         return "Incremental on-line bagging of Oza and Russell.";
@@ -78,14 +77,10 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
     public IntOption _ensembleSizeOption = new IntOption("ensembleSize", 'n',
             "The ensemble size.", 10, 1, Integer.MAX_VALUE);
 
-    public FlagOption _parallelOption = new FlagOption("parallel", 'p',
-            "Run ensemble in parallel.");
 
     public IntOption _randomSeedOption = new IntOption("randomSeed", 's',
             "The random seed.", 42, -Integer.MAX_VALUE, Integer.MAX_VALUE);
 
-    public IntOption _coreAmountOption = new IntOption("NumberOfCores", 'z',
-            "The amount of cores to use for parallelism, Note: The max accounts for physical and virtual Cores", 1, 0, Runtime.getRuntime().availableProcessors());
 
     protected Classifier[] _classifiers;
     protected Instance _instance;
@@ -109,7 +104,7 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
     }
 
 
-    public void trainOnInstanceImpl(Instance inst) throws ExecutionException, InterruptedException {
+    public void trainOnInstanceImpl(Instance inst)  {
 
         double t1 = System.currentTimeMillis();
         _t1 = t1;
@@ -117,22 +112,20 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
         int n = _classifiers.length;
         for (int i = 0; i < n; i++) _weight[i] = MiscUtils.poisson(1.0, _r);
 
-        if (_parallelOption.isSet()) {
+        if (_numOfCores == 0) {
 
             IntStream.range(0, n).parallel().forEach(i -> train(i, inst));
 
-        } else {
+        } else if (_numOfCores == 1) {
             for (int i = 0; i < n; i++) train(i, inst);
             double t2 = System.currentTimeMillis();
             _cpuTime += (t2 - _t1);
 
+        } else {
+            _threadpool.submit(() -> IntStream.range(0, n).parallel().forEach(i -> train(i, inst)));
         }
     }
 
-    //send the overall CPU time of the parallel model to the Evaluator to update the stats in the GUI
-    public double getCpuTime(){
-        return _cpuTime;
-    }
 
 
     public void train(int index, Instance instance) {
@@ -158,7 +151,7 @@ public class OzaBagMC extends AbstractClassifier implements MultiClassClassifier
     public double[] getVotesForInstance(Instance instance) {
         double t1 = System.currentTimeMillis();
         _t1 = t1;
-        if (_parallelOption.isSet()) {
+        if (_numOfCores == 0) {
             double sum = 0.0;
             _instance = instance;
             double[] votes =

@@ -10,7 +10,7 @@ import moa.AbstractMOAObject;
 import moa.capabilities.CapabilitiesHandler;
 import moa.capabilities.Capability;
 import moa.capabilities.ImmutableCapabilities;
-import moa.classifiers.AbstractClassifier;
+import moa.classifiers.AbstractClassifierParallel;
 import moa.classifiers.MultiClassClassifier;
 import moa.classifiers.Multithreading;
 import moa.classifiers.core.driftdetection.ChangeDetector;
@@ -63,7 +63,7 @@ import java.util.stream.IntStream;
  * @author Heitor Murilo Gomes (heitor_murilo_gomes at yahoo dot com dot br)
  * @version $Revision: 1 $
  */
-public class AdaptiveRandomForestMC extends AbstractClassifier implements MultiClassClassifier,
+public class AdaptiveRandomForestMC extends AbstractClassifierParallel implements MultiClassClassifier,
         CapabilitiesHandler, Multithreading {
 
     @Override
@@ -86,10 +86,6 @@ public class AdaptiveRandomForestMC extends AbstractClassifier implements MultiC
                     "Percentage (M * (m / 100))"},
             new String[]{"SpecifiedM", "SqrtM1", "MSqrtM1", "Percentage"}, 1);
 
-    public MultiChoiceOption mParallelType = new MultiChoiceOption("mNonParrallel", 'b',
-            "Selects level of parralisation",
-            new String[]{"Single", "Original", "new"},
-            new String[]{"single", "org", "new"}, 1);
 
     public IntOption mFeaturesPerTreeSizeOption = new IntOption("mFeaturesPerTreeSize", 'm',
             "Number of features allowed considered for each split. Negative values corresponds to M - m", 2, Integer.MIN_VALUE, Integer.MAX_VALUE);
@@ -114,9 +110,6 @@ public class AdaptiveRandomForestMC extends AbstractClassifier implements MultiC
 
     public FlagOption disableBackgroundLearnerOption = new FlagOption("disableBackgroundLearner", 'q',
             "Should use bkg learner? If disabled then reset tree immediately.");
-
-    public IntOption _coreAmountOption = new IntOption("NumberOfCores", 'z',
-            "The amount of cores to use for parallelism, Note: The max accounts for physical and virtual Cores", 1, 0, Runtime.getRuntime().availableProcessors());
 
 
     protected static final int FEATURES_M = 0;
@@ -177,7 +170,7 @@ public class AdaptiveRandomForestMC extends AbstractClassifier implements MultiC
 
         }
 
-        if (mParallelType.getChosenLabel().equals("new")) {
+        if (_numOfCores != 1) {
                 for (int i = 0; i < this.ensemble.length; i++) {
                         DoubleVector vote = new DoubleVector(this.ensemble[i].getVotesForInstance(instance));
                         InstanceExample example = new InstanceExample(instance);
@@ -185,7 +178,17 @@ public class AdaptiveRandomForestMC extends AbstractClassifier implements MultiC
                         int k = MiscUtils.poisson(this.lambdaOption.getValue(), this.classifierRandom);
                         _k[i] = k;
                 }
+                if(_numOfCores == 0)
                 IntStream.range(0, ensemble.length).parallel().forEach(i -> train(i,instance,_k[i]));
+                else {
+                    try {
+                        _threadpool.submit(() -> IntStream.range(0, ensemble.length).parallel().forEach(i -> train(i,instance,_k[i]))).get();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
+                }
 
 
 
