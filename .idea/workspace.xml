@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed62ce1e-7bf1-483f-96ab-e87915a8012d" name="Default Changelist" comment="AtomicInt now used for _cputime">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/moa/classifiers/AbstractClassifierParallel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/AbstractClassifierParallel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/Multithreading.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/Multithreading.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/AdaptiveRandomForestMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/AdaptiveRandomForestMC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/LBagMC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagAdwinMC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagMC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/classifiers/meta/OzaBagMC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/tasks/EvaluateInterleavedTestThenTrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moa/tasks/EvaluatePrequential.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moa/tasks/EvaluatePrequential.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

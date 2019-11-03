@@ -35,7 +35,7 @@ public abstract class AbstractClassifierParallel extends AbstractClassifier
 
 
     public IntOption _amountOfCores = new IntOption("coreSize", 'c',
-            "The amount of CPU Cores used for multi-threading", 1, 0, Runtime.getRuntime().availableProcessors());
+            "The amount of CPU Cores used for multi-threading", 1, (Runtime.getRuntime().availableProcessors()-2)*-1, Runtime.getRuntime().availableProcessors());
 
 
     /** The amount of CPU cores to be run in parallel */
